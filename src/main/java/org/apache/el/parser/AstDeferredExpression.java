@@ -27,7 +27,7 @@ import javax.el.ELException;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstDeferredExpression extends SimpleNode {
-    public AstDeferredExpression(int id) {
+    public AstDeferredExpression(String id) {
         super(id);
     }
 

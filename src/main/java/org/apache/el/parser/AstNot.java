@@ -27,7 +27,7 @@ import javax.el.ELException;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstNot extends SimpleNode {
-    public AstNot(int id) {
+    public AstNot(String id) {
         super(id);
     }
 

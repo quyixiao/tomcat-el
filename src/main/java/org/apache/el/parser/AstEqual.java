@@ -27,7 +27,7 @@ import javax.el.ELException;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstEqual extends BooleanNode {
-    public AstEqual(int id) {
+    public AstEqual(String id) {
         super(id);
     }
 

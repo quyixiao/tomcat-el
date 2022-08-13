@@ -28,7 +28,7 @@ import java.math.BigDecimal;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstFloatingPoint extends SimpleNode {
-    public AstFloatingPoint(int id) {
+    public AstFloatingPoint(String id) {
         super(id);
     }
 

@@ -27,7 +27,7 @@ import javax.el.ELException;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstDynamicExpression extends SimpleNode {
-    public AstDynamicExpression(int id) {
+    public AstDynamicExpression(String id) {
         super(id);
     }
 

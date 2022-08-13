@@ -27,7 +27,7 @@ import javax.el.ELException;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstAnd extends BooleanNode {
-    public AstAnd(int id) {
+    public AstAnd(String id) {
         super(id);
     }
 

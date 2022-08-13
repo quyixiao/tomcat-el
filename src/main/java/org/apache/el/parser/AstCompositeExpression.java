@@ -29,7 +29,7 @@ import javax.el.ELException;
  */
 public final class AstCompositeExpression extends SimpleNode {
 
-    public AstCompositeExpression(int id) {
+    public AstCompositeExpression(String id) {
         super(id);
     }
 

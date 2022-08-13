@@ -28,7 +28,7 @@ import javax.el.ELException;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstMult extends ArithmeticNode {
-    public AstMult(int id) {
+    public AstMult(String id) {
         super(id);
     }
 

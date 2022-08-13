@@ -29,7 +29,7 @@ import java.util.Map;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstEmpty extends SimpleNode {
-    public AstEmpty(int id) {
+    public AstEmpty(String id) {
         super(id);
     }
 

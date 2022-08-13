@@ -37,11 +37,11 @@ public abstract class SimpleNode extends ELSupport implements Node {
 
     protected Node[] children;
 
-    protected int id;
+    protected String id;
 
     protected String image;
 
-    public SimpleNode(int i) {
+    public SimpleNode(String i) {
         id = i;
     }
 
@@ -97,10 +97,10 @@ public abstract class SimpleNode extends ELSupport implements Node {
     @Override
     public String toString() {
         if (this.image != null) {
-            return ELParserTreeConstants.jjtNodeName[id] + "[" + this.image
+            return id + "[" + this.image
                     + "]";
         }
-        return ELParserTreeConstants.jjtNodeName[id];
+        return id;
     }
 
     public String toString(String prefix) {
@@ -168,7 +168,7 @@ public abstract class SimpleNode extends ELSupport implements Node {
         final int prime = 31;
         int result = 1;
         result = prime * result + Arrays.hashCode(children);
-        result = prime * result + id;
+        result = prime * result + ELParserTreeConstants.getId(id);
         result = prime * result + ((image == null) ? 0 : image.hashCode());
         return result;
     }

@@ -30,7 +30,7 @@ public class ArithmeticNode extends SimpleNode {
     /**
      * @param i
      */
-    public ArithmeticNode(int i) {
+    public ArithmeticNode(String i) {
         super(i);
     }
 

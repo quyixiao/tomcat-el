@@ -23,7 +23,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public AstCompositeExpression CompositeExpression() throws ParseException {
         /*@bgen(jjtree) CompositeExpression */
-        AstCompositeExpression jjtn000 = new AstCompositeExpression(JJTCOMPOSITEEXPRESSION);
+        AstCompositeExpression jjtn000 = new AstCompositeExpression("CompositeExpression");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         try {
@@ -95,7 +95,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void LiteralExpression() throws ParseException {
         /*@bgen(jjtree) LiteralExpression */
-        AstLiteralExpression jjtn000 = new AstLiteralExpression(JJTLITERALEXPRESSION);
+        AstLiteralExpression jjtn000 = new AstLiteralExpression("LiteralExpression");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         Token t = null;
@@ -117,7 +117,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void DeferredExpression() throws ParseException {
         /*@bgen(jjtree) DeferredExpression */
-        AstDeferredExpression jjtn000 = new AstDeferredExpression(JJTDEFERREDEXPRESSION);
+        AstDeferredExpression jjtn000 = new AstDeferredExpression("DeferredExpression");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         try {
@@ -157,7 +157,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void DynamicExpression() throws ParseException {
         /*@bgen(jjtree) DynamicExpression */
-        AstDynamicExpression jjtn000 = new AstDynamicExpression(JJTDYNAMICEXPRESSION);
+        AstDynamicExpression jjtn000 = new AstDynamicExpression("DynamicExpression");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         try {
@@ -215,7 +215,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
             jj_consume_token(QUESTIONMARK);
             Choice();
             jj_consume_token(COLON);
-            AstChoice jjtn001 = new AstChoice(JJTCHOICE);
+            AstChoice jjtn001 = new AstChoice("Choice");
             boolean jjtc001 = true;
             jjtree.openNodeScope(jjtn001);
             try {
@@ -277,7 +277,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                     jj_consume_token(-1);
                     throw new ParseException();
             }
-            AstOr jjtn001 = new AstOr(JJTOR);
+            AstOr jjtn001 = new AstOr("JJTOR");
             boolean jjtc001 = true;
             jjtree.openNodeScope(jjtn001);
             try {
@@ -339,7 +339,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                     jj_consume_token(-1);
                     throw new ParseException();
             }
-            AstAnd jjtn001 = new AstAnd(JJTAND);
+            AstAnd jjtn001 = new AstAnd("And");
             boolean jjtc001 = true;
             jjtree.openNodeScope(jjtn001);
             try {
@@ -406,7 +406,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                             jj_consume_token(-1);
                             throw new ParseException();
                     }
-                    AstEqual jjtn001 = new AstEqual(JJTEQUAL);
+                    AstEqual jjtn001 = new AstEqual("Equal");
                     boolean jjtc001 = true;
                     jjtree.openNodeScope(jjtn001);
                     try {
@@ -451,7 +451,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                             jj_consume_token(-1);
                             throw new ParseException();
                     }
-                    AstNotEqual jjtn002 = new AstNotEqual(JJTNOTEQUAL);
+                    AstNotEqual jjtn002 = new AstNotEqual("NotEqual");
                     boolean jjtc002 = true;
                     jjtree.openNodeScope(jjtn002);
                     try {
@@ -528,7 +528,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                             jj_consume_token(-1);
                             throw new ParseException();
                     }
-                    AstLessThan jjtn001 = new AstLessThan(JJTLESSTHAN);
+                    AstLessThan jjtn001 = new AstLessThan("LessThan");
                     boolean jjtc001 = true;
                     jjtree.openNodeScope(jjtn001);
                     try {
@@ -573,7 +573,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                             jj_consume_token(-1);
                             throw new ParseException();
                     }
-                    AstGreaterThan jjtn002 = new AstGreaterThan(JJTGREATERTHAN);
+                    AstGreaterThan jjtn002 = new AstGreaterThan("GreaterThan");
                     boolean jjtc002 = true;
                     jjtree.openNodeScope(jjtn002);
                     try {
@@ -618,7 +618,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                             jj_consume_token(-1);
                             throw new ParseException();
                     }
-                    AstLessThanEqual jjtn003 = new AstLessThanEqual(JJTLESSTHANEQUAL);
+                    AstLessThanEqual jjtn003 = new AstLessThanEqual("LessThanEqual");
                     boolean jjtc003 = true;
                     jjtree.openNodeScope(jjtn003);
                     try {
@@ -663,7 +663,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                             jj_consume_token(-1);
                             throw new ParseException();
                     }
-                    AstGreaterThanEqual jjtn004 = new AstGreaterThanEqual(JJTGREATERTHANEQUAL);
+                    AstGreaterThanEqual jjtn004 = new AstGreaterThanEqual("GreaterThanEqual");
                     boolean jjtc004 = true;
                     jjtree.openNodeScope(jjtn004);
                     try {
@@ -722,7 +722,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
             switch ((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
                 case PLUS:
                     jj_consume_token(PLUS);
-                    AstPlus jjtn001 = new AstPlus(JJTPLUS);
+                    AstPlus jjtn001 = new AstPlus("Plus");
                     boolean jjtc001 = true;
                     jjtree.openNodeScope(jjtn001);
                     try {
@@ -755,7 +755,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                     break;
                 case MINUS:
                     jj_consume_token(MINUS);
-                    AstMinus jjtn002 = new AstMinus(JJTMINUS);
+                    AstMinus jjtn002 = new AstMinus("Minus");
                     boolean jjtc002 = true;
                     jjtree.openNodeScope(jjtn002);
                     try {
@@ -817,7 +817,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
             switch ((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
                 case MULT:
                     jj_consume_token(MULT);
-                    AstMult jjtn001 = new AstMult(JJTMULT);
+                    AstMult jjtn001 = new AstMult("Mult");
                     boolean jjtc001 = true;
                     jjtree.openNodeScope(jjtn001);
                     try {
@@ -862,7 +862,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                             jj_consume_token(-1);
                             throw new ParseException();
                     }
-                    AstDiv jjtn002 = new AstDiv(JJTDIV);
+                    AstDiv jjtn002 = new AstDiv("Div");
                     boolean jjtc002 = true;
                     jjtree.openNodeScope(jjtn002);
                     try {
@@ -907,7 +907,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                             jj_consume_token(-1);
                             throw new ParseException();
                     }
-                    AstMod jjtn003 = new AstMod(JJTMOD);
+                    AstMod jjtn003 = new AstMod("Mod");
                     boolean jjtc003 = true;
                     jjtree.openNodeScope(jjtn003);
                     try {
@@ -954,7 +954,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
         switch ((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
             case MINUS:
                 jj_consume_token(MINUS);
-                AstNegative jjtn001 = new AstNegative(JJTNEGATIVE);
+                AstNegative jjtn001 = new AstNegative("Negative");
                 boolean jjtc001 = true;
                 jjtree.openNodeScope(jjtn001);
                 try {
@@ -999,7 +999,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                         jj_consume_token(-1);
                         throw new ParseException();
                 }
-                AstNot jjtn002 = new AstNot(JJTNOT);
+                AstNot jjtn002 = new AstNot("Not");
                 boolean jjtc002 = true;
                 jjtree.openNodeScope(jjtn002);
                 try {
@@ -1032,7 +1032,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                 break;
             case EMPTY:
                 jj_consume_token(EMPTY);
-                AstEmpty jjtn003 = new AstEmpty(JJTEMPTY);
+                AstEmpty jjtn003 = new AstEmpty("Empty");
                 boolean jjtc003 = true;
                 jjtree.openNodeScope(jjtn003);
                 try {
@@ -1085,7 +1085,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      * Defines Prefix plus zero or more Suffixes
      */
     final public void Value() throws ParseException {
-        AstValue jjtn001 = new AstValue(JJTVALUE);
+        AstValue jjtn001 = new AstValue("Value");
         boolean jjtc001 = true;
         jjtree.openNodeScope(jjtn001);
         try {
@@ -1188,7 +1188,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void DotSuffix() throws ParseException {
         /*@bgen(jjtree) DotSuffix */
-        AstDotSuffix jjtn000 = new AstDotSuffix(JJTDOTSUFFIX);
+        AstDotSuffix jjtn000 = new AstDotSuffix("DotSuffix");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         Token t = null;
@@ -1211,7 +1211,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void BracketSuffix() throws ParseException {
         /*@bgen(jjtree) BracketSuffix */
-        AstBracketSuffix jjtn000 = new AstBracketSuffix(JJTBRACKETSUFFIX);
+        AstBracketSuffix jjtn000 = new AstBracketSuffix("BracketSuffix");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         try {
@@ -1250,7 +1250,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void MethodParameters() throws ParseException {
         /*@bgen(jjtree) MethodParameters */
-        AstMethodParameters jjtn000 = new AstMethodParameters(JJTMETHODPARAMETERS);
+        AstMethodParameters jjtn000 = new AstMethodParameters("MethodParameters");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         try {
@@ -1350,7 +1350,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void Identifier() throws ParseException {
         /*@bgen(jjtree) Identifier */
-        AstIdentifier jjtn000 = new AstIdentifier(JJTIDENTIFIER);
+        AstIdentifier jjtn000 = new AstIdentifier("Identifier");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         Token t = null;
@@ -1372,7 +1372,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void Function() throws ParseException {
         /*@bgen(jjtree) Function */
-        AstFunction jjtn000 = new AstFunction(JJTFUNCTION);
+        AstFunction jjtn000 = new AstFunction("Function");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         Token t0 = null;
@@ -1488,7 +1488,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     final public void Boolean() throws ParseException {
         switch ((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
             case TRUE:
-                AstTrue jjtn001 = new AstTrue(JJTTRUE);
+                AstTrue jjtn001 = new AstTrue("True");
                 boolean jjtc001 = true;
                 jjtree.openNodeScope(jjtn001);
                 try {
@@ -1500,7 +1500,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                 }
                 break;
             case FALSE:
-                AstFalse jjtn002 = new AstFalse(JJTFALSE);
+                AstFalse jjtn002 = new AstFalse("False");
                 boolean jjtc002 = true;
                 jjtree.openNodeScope(jjtn002);
                 try {
@@ -1524,7 +1524,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void FloatingPoint() throws ParseException {
         /*@bgen(jjtree) FloatingPoint */
-        AstFloatingPoint jjtn000 = new AstFloatingPoint(JJTFLOATINGPOINT);
+        AstFloatingPoint jjtn000 = new AstFloatingPoint("FloatingPoint");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         Token t = null;
@@ -1546,7 +1546,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void Integer() throws ParseException {
         /*@bgen(jjtree) Integer */
-        AstInteger jjtn000 = new AstInteger(JJTINTEGER);
+        AstInteger jjtn000 = new AstInteger("Integer");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         Token t = null;
@@ -1568,7 +1568,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void String() throws ParseException {
         /*@bgen(jjtree) String */
-        AstString jjtn000 = new AstString(JJTSTRING);
+        AstString jjtn000 = new AstString("String");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         Token t = null;
@@ -1590,7 +1590,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void Null() throws ParseException {
         /*@bgen(jjtree) Null */
-        AstNull jjtn000 = new AstNull(JJTNULL);
+        AstNull jjtn000 = new AstNull("Null");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         try {

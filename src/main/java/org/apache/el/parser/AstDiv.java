@@ -28,7 +28,7 @@ import javax.el.ELException;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstDiv extends ArithmeticNode {
-    public AstDiv(int id) {
+    public AstDiv(String id) {
         super(id);
     }
 

@@ -36,7 +36,7 @@ public final class AstFunction extends SimpleNode {
 
     protected String prefix = "";
 
-    public AstFunction(int id) {
+    public AstFunction(String id) {
         super(id);
     }
 
@@ -158,6 +158,6 @@ public final class AstFunction extends SimpleNode {
     @Override
     public String toString()
     {
-        return ELParserTreeConstants.jjtNodeName[id] + "[" + this.getOutputName() + "]";
+        return id + "[" + this.getOutputName() + "]";
     }
 }

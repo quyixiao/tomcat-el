@@ -23,7 +23,7 @@ import org.apache.el.lang.EvaluationContext;
 import java.util.ArrayList;
 
 public final class AstMethodParameters extends SimpleNode {
-    public AstMethodParameters(int id) {
+    public AstMethodParameters(String id) {
         super(id);
     }
 

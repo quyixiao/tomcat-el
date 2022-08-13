@@ -27,7 +27,7 @@ import javax.el.ELException;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstChoice extends SimpleNode {
-    public AstChoice(int id) {
+    public AstChoice(String id) {
         super(id);
     }
 

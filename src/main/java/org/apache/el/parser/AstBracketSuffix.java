@@ -27,7 +27,7 @@ import javax.el.ELException;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstBracketSuffix extends SimpleNode {
-    public AstBracketSuffix(int id) {
+    public AstBracketSuffix(String id) {
         super(id);
     }
 

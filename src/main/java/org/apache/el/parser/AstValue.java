@@ -68,7 +68,7 @@ public final class AstValue extends SimpleNode {
         protected Object property;
     }
 
-    public AstValue(int id) {
+    public AstValue(String id) {
         super(id);
     }
 

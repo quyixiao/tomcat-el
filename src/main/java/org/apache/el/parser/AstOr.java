@@ -27,7 +27,7 @@ import javax.el.ELException;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstOr extends BooleanNode {
-    public AstOr(int id) {
+    public AstOr(String id) {
         super(id);
     }
 

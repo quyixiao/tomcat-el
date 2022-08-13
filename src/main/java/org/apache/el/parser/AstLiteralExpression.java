@@ -27,7 +27,7 @@ import javax.el.ELException;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstLiteralExpression extends SimpleNode {
-    public AstLiteralExpression(int id) {
+    public AstLiteralExpression(String id) {
         super(id);
     }
 

@@ -29,7 +29,7 @@ import javax.el.*;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstIdentifier extends SimpleNode {
-    public AstIdentifier(int id) {
+    public AstIdentifier(String id) {
         super(id);
     }
 

@@ -29,7 +29,7 @@ import javax.el.ELException;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstDotSuffix extends SimpleNode {
-    public AstDotSuffix(int id) {
+    public AstDotSuffix(String id) {
         super(id);
     }
 

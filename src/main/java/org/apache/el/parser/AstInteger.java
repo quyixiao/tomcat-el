@@ -28,7 +28,7 @@ import java.math.BigInteger;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstInteger extends SimpleNode {
-    public AstInteger(int id) {
+    public AstInteger(String id) {
         super(id);
     }
 

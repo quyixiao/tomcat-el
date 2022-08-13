@@ -3,40 +3,40 @@ package org.apache.el.parser;
 
 public interface ELParserTreeConstants
 {
-  public int JJTCOMPOSITEEXPRESSION = 0;
-  public int JJTLITERALEXPRESSION = 1;
-  public int JJTDEFERREDEXPRESSION = 2;
-  public int JJTDYNAMICEXPRESSION = 3;
-  public int JJTVOID = 4;
-  public int JJTCHOICE = 5;
-  public int JJTOR = 6;
-  public int JJTAND = 7;
-  public int JJTEQUAL = 8;
-  public int JJTNOTEQUAL = 9;
-  public int JJTLESSTHAN = 10;
-  public int JJTGREATERTHAN = 11;
-  public int JJTLESSTHANEQUAL = 12;
-  public int JJTGREATERTHANEQUAL = 13;
-  public int JJTPLUS = 14;
-  public int JJTMINUS = 15;
-  public int JJTMULT = 16;
-  public int JJTDIV = 17;
-  public int JJTMOD = 18;
-  public int JJTNEGATIVE = 19;
-  public int JJTNOT = 20;
-  public int JJTEMPTY = 21;
-  public int JJTVALUE = 22;
-  public int JJTDOTSUFFIX = 23;
-  public int JJTBRACKETSUFFIX = 24;
-  public int JJTMETHODPARAMETERS = 25;
-  public int JJTIDENTIFIER = 26;
-  public int JJTFUNCTION = 27;
-  public int JJTTRUE = 28;
-  public int JJTFALSE = 29;
-  public int JJTFLOATINGPOINT = 30;
-  public int JJTINTEGER = 31;
-  public int JJTSTRING = 32;
-  public int JJTNULL = 33;
+  public String  JJTCOMPOSITEEXPRESSION = "CompositeExpression";
+  public String  JJTLITERALEXPRESSION = "LiteralExpression";
+  public String  JJTDEFERREDEXPRESSION = "DeferredExpression";
+  public String  JJTDYNAMICEXPRESSION = "DynamicExpression";
+  public String  JJTVOID = "void";
+  public String  JJTCHOICE = "Choice";
+  public String  JJTOR = "Or";
+  public String  JJTAND = "And";
+  public String  JJTEQUAL = "Equal";
+  public String  JJTNOTEQUAL = "NotEqual";
+  public String  JJTLESSTHAN = "LessThan";
+  public String  JJTGREATERTHAN = "GreaterThan";
+  public String  JJTLESSTHANEQUAL = "LessThanEqual";
+  public String  JJTGREATERTHANEQUAL = "GreaterThanEqual";
+  public String  JJTPLUS = "Plus";
+  public String  JJTMINUS = "Minus";
+  public String  JJTMULT = "Mult";
+  public String  JJTDIV = "Div";
+  public String  JJTMOD = "Mod";
+  public String  JJTNEGATIVE = "Negative";
+  public String  JJTNOT = "Not";
+  public String  JJTEMPTY = "Empty";
+  public String  JJTVALUE = "Value";
+  public String  JJTDOTSUFFIX = "DotSuffix";
+  public String  JJTBRACKETSUFFIX = "BracketSuffix";
+  public String  JJTMETHODPARAMETERS = "MethodParameters";
+  public String  JJTIDENTIFIER = "Identifier";
+  public String  JJTFUNCTION = "Function";
+  public String  JJTTRUE = "True";
+  public String  JJTFALSE = "False";
+  public String  JJTFLOATINGPOINT = "FloatingPoint";
+  public String  JJTINTEGER = "Integer";
+  public String  JJTSTRING = "String";
+  public String  JJTNULL = "Null";
 
 
   public String[] jjtNodeName = {
@@ -54,16 +54,19 @@ public interface ELParserTreeConstants
     "GreaterThan",
     "LessThanEqual",
     "GreaterThanEqual",
+
     "Plus",
     "Minus",
     "Mult",
     "Div",
     "Mod",
     "Negative",
+
     "Not",
     "Empty",
     "Value",
     "DotSuffix",
+
     "BracketSuffix",
     "MethodParameters",
     "Identifier",
@@ -75,5 +78,20 @@ public interface ELParserTreeConstants
     "String",
     "Null",
   };
+
+
+
+  public static  int getId(String a ){
+    for(int i = 0 ; i< jjtNodeName.length;i ++){
+      if(jjtNodeName[i].equals(a)){
+        return i ;
+      }
+    }
+    return 0 ;
+  }
+
+
+
+
 }
 /* JavaCC - OriginalChecksum=437008e736f149e8fa6712fb36d831a1 (do not edit this line) */

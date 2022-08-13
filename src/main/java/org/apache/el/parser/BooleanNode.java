@@ -28,7 +28,7 @@ public class BooleanNode extends SimpleNode {
     /**
      * @param i
      */
-    public BooleanNode(int i) {
+    public BooleanNode(String i) {
         super(i);
     }
     @Override

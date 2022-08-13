@@ -29,7 +29,7 @@ import java.math.BigInteger;
  * @author Jacob Hookom [jacob@hookom.net]
  */
 public final class AstNegative extends SimpleNode {
-    public AstNegative(int id) {
+    public AstNegative(String id) {
         super(id);
     }
 
