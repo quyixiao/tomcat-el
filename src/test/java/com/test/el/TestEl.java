@@ -7,7 +7,7 @@ import java.io.StringReader;
 
 public class TestEl {
     public static void main(String[] args) throws Exception {
-        String expr = "${person.name}";
+        String expr = "${5 eq 5 }";
         Node n =  (new ELParser(new StringReader(expr))).CompositeExpression();
         System.out.println(n);
     }

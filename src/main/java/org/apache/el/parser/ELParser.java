@@ -53,7 +53,6 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      * type of returned node
      */
     final public AstCompositeExpression CompositeExpression() throws ParseException {
-        /*@bgen(jjtree) CompositeExpression */
         AstCompositeExpression jjtn000 = new AstCompositeExpression("CompositeExpression");
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
@@ -61,9 +60,9 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
             label_1:
             while (true) {
                 switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                    case LITERAL_EXPRESSION:
-                    case START_DYNAMIC_EXPRESSION:
-                    case START_DEFERRED_EXPRESSION:
+                    case LITERAL_EXPRESSION:            // <LITERAL_EXPRESSION>
+                    case START_DYNAMIC_EXPRESSION:      // "${"
+                    case START_DEFERRED_EXPRESSION:     // "#{"
                         ;
                         break;
                     default:
@@ -71,13 +70,13 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                         break label_1;
                 }
                 switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                    case START_DEFERRED_EXPRESSION:
+                    case START_DEFERRED_EXPRESSION:     // "#{"
                         DeferredExpression();
                         break;
-                    case START_DYNAMIC_EXPRESSION:
+                    case START_DYNAMIC_EXPRESSION:      // "${"
                         DynamicExpression();
                         break;
-                    case LITERAL_EXPRESSION:
+                    case LITERAL_EXPRESSION:            // <LITERAL_EXPRESSION>
                         LiteralExpression();
                         break;
                     default:
@@ -152,9 +151,9 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         try {
-            jj_consume_token(START_DEFERRED_EXPRESSION);
+            jj_consume_token(START_DEFERRED_EXPRESSION);        // "#{"
             Expression();
-            jj_consume_token(END_EXPRESSION);
+            jj_consume_token(END_EXPRESSION);               //"}"
         } catch (Throwable jjte000) {
             if (jjtc000) {
                 jjtree.clearNodeScope(jjtn000);
@@ -530,14 +529,14 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
         label_6:
         while (true) {
             switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                case GT0:
-                case GT1:
-                case LT0:
-                case LT1:
-                case GE0:
-                case GE1:
-                case LE0:
-                case LE1:
+                case GT0:       // >
+                case GT1:       // gt
+                case LT0:       // <
+                case LT1:       // lt
+                case GE0:       // >=
+                case GE1:       // ge
+                case LE0:       // <=
+                case LE1:       // le
                     ;
                     break;
                 default:
@@ -545,13 +544,13 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                     break label_6;
             }
             switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                case LT0:
-                case LT1:
+                case LT0:       // <
+                case LT1:       // gt
                     switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                        case LT0:
+                        case LT0:       // <
                             jj_consume_token(LT0);
                             break;
-                        case LT1:
+                        case LT1:       // gt
                             jj_consume_token(LT1);
                             break;
                         default:
@@ -590,13 +589,13 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                         }
                     }
                     break;
-                case GT0:
-                case GT1:
+                case GT0:                   // >
+                case GT1:                   // gt
                     switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                        case GT0:
+                        case GT0:           // >
                             jj_consume_token(GT0);
                             break;
-                        case GT1:
+                        case GT1:           // gt
                             jj_consume_token(GT1);
                             break;
                         default:
@@ -834,11 +833,11 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
         label_8:
         while (true) {
             switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                case MULT:
-                case DIV0:
-                case DIV1:
-                case MOD0:
-                case MOD1:
+                case MULT:                      // *
+                case DIV0:                      // /
+                case DIV1:                      // div
+                case MOD0:                      // %
+                case MOD1:                      // mod
                     ;
                     break;
                 default:
@@ -846,7 +845,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                     break label_8;
             }
             switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                case MULT:
+                case MULT:          // *
                     jj_consume_token(MULT);
                     AstMult jjtn001 = new AstMult("Mult");
                     boolean jjtc001 = true;
@@ -983,7 +982,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void Unary() throws ParseException {
         switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-            case MINUS:
+            case MINUS:                 // -
                 jj_consume_token(MINUS);
                 AstNegative jjtn001 = new AstNegative("Negative");
                 boolean jjtc001 = true;
@@ -1016,8 +1015,8 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                     }
                 }
                 break;
-            case NOT0:
-            case NOT1:
+            case NOT0: // !
+            case NOT1:// not
                 switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
                     case NOT0:
                         jj_consume_token(NOT0);
@@ -1061,7 +1060,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                     }
                 }
                 break;
-            case EMPTY:
+            case EMPTY:             // empty
                 jj_consume_token(EMPTY);
                 AstEmpty jjtn003 = new AstEmpty("Empty");
                 boolean jjtc003 = true;
@@ -1094,14 +1093,14 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                     }
                 }
                 break;
-            case INTEGER_LITERAL:
-            case FLOATING_POINT_LITERAL:
-            case STRING_LITERAL:
-            case TRUE:
-            case FALSE:
-            case NULL:
-            case LPAREN:
-            case IDENTIFIER:
+            case INTEGER_LITERAL:                       // <INTEGER_LITERAL>
+            case FLOATING_POINT_LITERAL:                // <FLOATING_POINT_LITERAL>
+            case STRING_LITERAL:                        // <STRING_LITERAL>
+            case TRUE:                                  // true
+            case FALSE:                                 // false
+            case NULL:                                  // null
+            case LPAREN:                                // (
+            case IDENTIFIER:                            // <IDENTIFIER>
                 Value();
                 break;
             default:
@@ -1124,8 +1123,8 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
             label_9:
             while (true) {
                 switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                    case DOT:
-                    case LBRACK:
+                    case DOT:                               // .
+                    case LBRACK:                            // [
                         ;
                         break;
                     default:
@@ -1192,10 +1191,10 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void ValueSuffix() throws ParseException {
         switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-            case DOT:
+            case DOT:                                   // .
                 DotSuffix();
                 break;
-            case LBRACK:
+            case LBRACK:                                // [
                 BracketSuffix();
                 break;
             default:
@@ -1204,7 +1203,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                 throw new ParseException();
         }
         switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-            case LPAREN:
+            case LPAREN:                                  // (
                 MethodParameters();
                 break;
             default:
@@ -1285,32 +1284,32 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
         boolean jjtc000 = true;
         jjtree.openNodeScope(jjtn000);
         try {
-            jj_consume_token(LPAREN);
+            jj_consume_token(LPAREN);           // (
             switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                case INTEGER_LITERAL:
-                case FLOATING_POINT_LITERAL:
-                case STRING_LITERAL:
-                case TRUE:
-                case FALSE:
-                case NULL:
-                case LPAREN:
-                case NOT0:
-                case NOT1:
-                case EMPTY:
-                case MINUS:
-                case IDENTIFIER:
+                case INTEGER_LITERAL:           // <INTEGER_LITERAL>
+                case FLOATING_POINT_LITERAL:    // <FLOATING_POINT_LITERAL>
+                case STRING_LITERAL:            // <STRING_LITERAL>
+                case TRUE:                      // true
+                case FALSE:                     // false
+                case NULL:                      // null
+                case LPAREN:                    // (
+                case NOT0:                      // !
+                case NOT1:                      // not
+                case EMPTY:                     // empty
+                case MINUS:                     //  -
+                case IDENTIFIER:                // <IDENTIFIER>
                     Expression();
                     label_10:
                     while (true) {
                         switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                            case COMMA:
+                            case COMMA:         // ,
                                 ;
                                 break;
                             default:
                                 jj_la1[28] = jj_gen;
                                 break label_10;
                         }
-                        jj_consume_token(COMMA);
+                        jj_consume_token(COMMA);    // ,
                         Expression();
                     }
                     break;
@@ -1318,7 +1317,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                     jj_la1[29] = jj_gen;
                     ;
             }
-            jj_consume_token(RPAREN);
+            jj_consume_token(RPAREN); // )
         } catch (Throwable jjte000) {
             if (jjtc000) {
                 jjtree.clearNodeScope(jjtn000);
@@ -1353,9 +1352,9 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     final public void NonLiteral() throws ParseException {
         switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
             case LPAREN:
-                jj_consume_token(LPAREN);
+                jj_consume_token(LPAREN); // (
                 Expression();
-                jj_consume_token(RPAREN);
+                jj_consume_token(RPAREN);   // )
                 break;
             default:
                 jj_la1[30] = jj_gen;
@@ -1386,7 +1385,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
         jjtree.openNodeScope(jjtn000);
         Token t = null;
         try {
-            t = jj_consume_token(IDENTIFIER);
+            t = jj_consume_token(IDENTIFIER);    // <IDENTIFIER>
             jjtree.closeNodeScope(jjtn000, true);
             jjtc000 = false;
             jjtn000.setImage(t.image);
@@ -1410,44 +1409,44 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
         Token t1 = null;
         try {
             if (jj_2_3(2)) {
-                t0 = jj_consume_token(IDENTIFIER);
-                jj_consume_token(COLON);
+                t0 = jj_consume_token(IDENTIFIER);  // <IDENTIFIER>
+                jj_consume_token(COLON);            // :
             } else {
                 ;
             }
-            t1 = jj_consume_token(IDENTIFIER);
+            t1 = jj_consume_token(IDENTIFIER);     // <IDENTIFIER>
             if (t0 != null) {
                 jjtn000.setPrefix(t0.image);
                 jjtn000.setLocalName(t1.image);
             } else {
                 jjtn000.setLocalName(t1.image);
             }
-            jj_consume_token(LPAREN);
+            jj_consume_token(LPAREN);       // (
             switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                case INTEGER_LITERAL:
-                case FLOATING_POINT_LITERAL:
-                case STRING_LITERAL:
-                case TRUE:
-                case FALSE:
-                case NULL:
-                case LPAREN:
-                case NOT0:
-                case NOT1:
-                case EMPTY:
-                case MINUS:
-                case IDENTIFIER:
+                case INTEGER_LITERAL:               // <INTEGER_LITERAL>
+                case FLOATING_POINT_LITERAL:        // <FLOATING_POINT_LITERAL>
+                case STRING_LITERAL:                // <STRING_LITERAL>
+                case TRUE:                          // true
+                case FALSE:                         // false
+                case NULL:                          // null
+                case LPAREN:                        // (
+                case NOT0:                          // !
+                case NOT1:                          // not
+                case EMPTY:                         // empty
+                case MINUS:                         // -
+                case IDENTIFIER:                    // <IDENTIFIER>
                     Expression();
                     label_11:
                     while (true) {
                         switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-                            case COMMA:
+                            case COMMA:             // ,
                                 ;
                                 break;
                             default:
                                 jj_la1[32] = jj_gen;
                                 break label_11;
                         }
-                        jj_consume_token(COMMA);
+                        jj_consume_token(COMMA);    // ,
                         Expression();
                     }
                     break;
@@ -1455,7 +1454,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
                     jj_la1[33] = jj_gen;
                     ;
             }
-            jj_consume_token(RPAREN);
+            jj_consume_token(RPAREN);               // )
         } catch (Throwable jjte000) {
             if (jjtc000) {
                 jjtree.clearNodeScope(jjtn000);
@@ -1489,20 +1488,20 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void Literal() throws ParseException {
         switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-            case TRUE:
-            case FALSE:
+            case TRUE:                          // true
+            case FALSE:                         // false
                 Boolean();
                 break;
-            case FLOATING_POINT_LITERAL:
+            case FLOATING_POINT_LITERAL:        // <FLOATING_POINT_LITERAL>
                 FloatingPoint();
                 break;
-            case INTEGER_LITERAL:
+            case INTEGER_LITERAL:               // <INTEGER_LITERAL>
                 Integer();
                 break;
-            case STRING_LITERAL:
+            case STRING_LITERAL:                // <STRING_LITERAL>
                 String();
                 break;
-            case NULL:
+            case NULL:                          // null
                 Null();
                 break;
             default:
@@ -1518,24 +1517,24 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      */
     final public void Boolean() throws ParseException {
         switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
-            case TRUE:
+            case TRUE:                          // true
                 AstTrue jjtn001 = new AstTrue("True");
                 boolean jjtc001 = true;
                 jjtree.openNodeScope(jjtn001);
                 try {
-                    jj_consume_token(TRUE);
+                    jj_consume_token(TRUE);     // true
                 } finally {
                     if (jjtc001) {
                         jjtree.closeNodeScope(jjtn001, true);
                     }
                 }
                 break;
-            case FALSE:
+            case FALSE:         // false
                 AstFalse jjtn002 = new AstFalse("False");
                 boolean jjtc002 = true;
                 jjtree.openNodeScope(jjtn002);
                 try {
-                    jj_consume_token(FALSE);
+                    jj_consume_token(FALSE);        //false
                 } finally {
                     if (jjtc002) {
                         jjtree.closeNodeScope(jjtn002, true);
@@ -1671,7 +1670,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
 
     private boolean jj_3R_13() {
         if (jj_scan_token(IDENTIFIER)) return true;
-        if (jj_scan_token(COLON)) return true;
+        if (jj_scan_token(COLON)) return true;      // :
         return false;
     }
 
@@ -1680,7 +1679,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
         xsp = jj_scanpos;
         if (jj_3R_13()) jj_scanpos = xsp;
         if (jj_scan_token(IDENTIFIER)) return true;
-        if (jj_scan_token(LPAREN)) return true;
+        if (jj_scan_token(LPAREN)) return true;     // (
         return false;
     }
 
@@ -1708,7 +1707,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     }
 
     private boolean jj_3R_34() {
-        if (jj_scan_token(MINUS)) return true;
+        if (jj_scan_token(MINUS)) return true;      // -
         return false;
     }
 
@@ -1728,12 +1727,12 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     }
 
     private boolean jj_3R_33() {
-        if (jj_scan_token(PLUS)) return true;
+        if (jj_scan_token(PLUS)) return true; // +
         return false;
     }
 
     private boolean jj_3R_57() {
-        if (jj_scan_token(LPAREN)) return true;
+        if (jj_scan_token(LPAREN)) return true; // (
         if (jj_3R_67()) return true;
         return false;
     }
@@ -1752,7 +1751,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     }
 
     private boolean jj_3R_66() {
-        if (jj_scan_token(NULL)) return true;
+        if (jj_scan_token(NULL)) return true; // null
         return false;
     }
 
@@ -1772,9 +1771,9 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     private boolean jj_3R_30() {
         Token xsp;
         xsp = jj_scanpos;
-        if (jj_scan_token(GE0)) {
+        if (jj_scan_token(GE0)) {           // >=
             jj_scanpos = xsp;
-            if (jj_scan_token(GE1)) return true;
+            if (jj_scan_token(GE1)) return true;        // ge
         }
         return false;
     }
@@ -1787,9 +1786,9 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     private boolean jj_3R_29() {
         Token xsp;
         xsp = jj_scanpos;
-        if (jj_scan_token(LE0)) {
+        if (jj_scan_token(LE0)) {               // <=
             jj_scanpos = xsp;
-            if (jj_scan_token(LE1)) return true;
+            if (jj_scan_token(LE1)) return true; // le
         }
         return false;
     }
@@ -1797,9 +1796,9 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     private boolean jj_3R_28() {
         Token xsp;
         xsp = jj_scanpos;
-        if (jj_scan_token(GT0)) {
+        if (jj_scan_token(GT0)) {           // >
             jj_scanpos = xsp;
-            if (jj_scan_token(GT1)) return true;
+            if (jj_scan_token(GT1)) return true; // gt
         }
         return false;
     }
@@ -1823,15 +1822,15 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     private boolean jj_3R_27() {
         Token xsp;
         xsp = jj_scanpos;
-        if (jj_scan_token(LT0)) {
+        if (jj_scan_token(LT0)) {                       // <
             jj_scanpos = xsp;
-            if (jj_scan_token(LT1)) return true;
+            if (jj_scan_token(LT1)) return true;        // lt
         }
         return false;
     }
 
     private boolean jj_3R_61() {
-        if (jj_scan_token(LBRACK)) return true;
+        if (jj_scan_token(LBRACK)) return true;          // [
         return false;
     }
 
@@ -1841,7 +1840,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     }
 
     private boolean jj_3R_64() {
-        if (jj_scan_token(INTEGER_LITERAL)) return true;
+        if (jj_scan_token(INTEGER_LITERAL)) return true;        // <INTEGER_LITERAL>
         return false;
     }
 
@@ -1859,31 +1858,31 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     }
 
     private boolean jj_3R_60() {
-        if (jj_scan_token(DOT)) return true;
+        if (jj_scan_token(DOT)) return true;        // .
         return false;
     }
 
     private boolean jj_3R_24() {
         Token xsp;
         xsp = jj_scanpos;
-        if (jj_scan_token(NE0)) {
+        if (jj_scan_token(NE0)) {                   // !
             jj_scanpos = xsp;
-            if (jj_scan_token(NE1)) return true;
+            if (jj_scan_token(NE1)) return true;    // ne
         }
         return false;
     }
 
     private boolean jj_3R_63() {
-        if (jj_scan_token(FLOATING_POINT_LITERAL)) return true;
+        if (jj_scan_token(FLOATING_POINT_LITERAL)) return true;     // <FLOATING_POINT_LITERAL>
         return false;
     }
 
     private boolean jj_3R_23() {
         Token xsp;
         xsp = jj_scanpos;
-        if (jj_scan_token(EQ0)) {
+        if (jj_scan_token(EQ0)) {                       // ==
             jj_scanpos = xsp;
-            if (jj_scan_token(EQ1)) return true;
+            if (jj_scan_token(EQ1)) return true;        // eq
         }
         return false;
     }
@@ -1906,9 +1905,9 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     private boolean jj_3R_18() {
         Token xsp;
         xsp = jj_scanpos;
-        if (jj_scan_token(AND0)) {
+        if (jj_scan_token(AND0)) {          // &&
             jj_scanpos = xsp;
-            if (jj_scan_token(AND1)) return true;
+            if (jj_scan_token(AND1)) return true;       // and
         }
         return false;
     }
@@ -1924,7 +1923,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     }
 
     private boolean jj_3R_71() {
-        if (jj_scan_token(FALSE)) return true;
+        if (jj_scan_token(FALSE)) return true;      //false
         return false;
     }
 
@@ -1947,7 +1946,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     }
 
     private boolean jj_3R_70() {
-        if (jj_scan_token(TRUE)) return true;
+        if (jj_scan_token(TRUE)) return true;       //true
         return false;
     }
 
@@ -2002,9 +2001,9 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     private boolean jj_3R_16() {
         Token xsp;
         xsp = jj_scanpos;
-        if (jj_scan_token(OR0)) {
+        if (jj_scan_token(OR0)) {                   // ||
             jj_scanpos = xsp;
-            if (jj_scan_token(OR1)) return true;
+            if (jj_scan_token(OR1)) return true;    // or
         }
         return false;
     }
@@ -2075,9 +2074,9 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     }
 
     private boolean jj_3_1() {
-        if (jj_scan_token(QUESTIONMARK)) return true;
+        if (jj_scan_token(QUESTIONMARK)) return true;       // ?
         if (jj_3R_12()) return true;
-        if (jj_scan_token(COLON)) return true;
+        if (jj_scan_token(COLON)) return true;              // :
         return false;
     }
 
@@ -2087,7 +2086,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     }
 
     private boolean jj_3R_37() {
-        if (jj_scan_token(EMPTY)) return true;
+        if (jj_scan_token(EMPTY)) return true;          // empty
         if (jj_3R_31()) return true;
         return false;
     }
@@ -2108,9 +2107,9 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     private boolean jj_3R_36() {
         Token xsp;
         xsp = jj_scanpos;
-        if (jj_scan_token(NOT0)) {
+        if (jj_scan_token(NOT0)) {                      // !
             jj_scanpos = xsp;
-            if (jj_scan_token(NOT1)) return true;
+            if (jj_scan_token(NOT1)) return true;       // not
         }
         if (jj_3R_31()) return true;
         return false;
@@ -2133,14 +2132,14 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     }
 
     private boolean jj_3R_35() {
-        if (jj_scan_token(MINUS)) return true;
+        if (jj_scan_token(MINUS)) return true;          // -
         if (jj_3R_31()) return true;
         return false;
     }
 
     private boolean jj_3_3() {
         if (jj_scan_token(IDENTIFIER)) return true;
-        if (jj_scan_token(COLON)) return true;
+        if (jj_scan_token(COLON)) return true;          // :
         return false;
     }
 
@@ -2148,8 +2147,8 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
         Token xsp;
         xsp = jj_scanpos;
         if (jj_3_3()) jj_scanpos = xsp;
-        if (jj_scan_token(IDENTIFIER)) return true;
-        if (jj_scan_token(LPAREN)) return true;
+        if (jj_scan_token(IDENTIFIER)) return true;     // <IDENTIFIER>
+        if (jj_scan_token(LPAREN)) return true;         // (
         return false;
     }
 
@@ -2161,9 +2160,9 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     private boolean jj_3R_41() {
         Token xsp;
         xsp = jj_scanpos;
-        if (jj_scan_token(MOD0)) {
+        if (jj_scan_token(MOD0)) {                      // %
             jj_scanpos = xsp;
-            if (jj_scan_token(MOD1)) return true;
+            if (jj_scan_token(MOD1)) return true;       // mod
         }
         return false;
     }
@@ -2171,9 +2170,9 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     private boolean jj_3R_40() {
         Token xsp;
         xsp = jj_scanpos;
-        if (jj_scan_token(DIV0)) {
+        if (jj_scan_token(DIV0)) {                      // /
             jj_scanpos = xsp;
-            if (jj_scan_token(DIV1)) return true;
+            if (jj_scan_token(DIV1)) return true;       // div
         }
         return false;
     }
@@ -2192,7 +2191,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     }
 
     private boolean jj_3R_39() {
-        if (jj_scan_token(MULT)) return true;
+        if (jj_scan_token(MULT)) return true;           // *
         return false;
     }
 
@@ -2406,8 +2405,10 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
      * Get the next Token.
      */
     final public Token getNextToken() {
-        if (token.next != null) token = token.next;
-        else token = token.next = token_source.getNextToken();
+        if (token.next != null)
+            token = token.next;
+        else
+            token = token.next = token_source.getNextToken();
         jj_ntk = jj_kind;
         jj_gen++;
         return token;
@@ -2438,6 +2439,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
     //private int jj_kind = -1;
     private String[] jj_lasttokens = new String[100];
     private int jj_endpos;
+
 
     private void jj_add_error_token(String kind, int pos) {
         if (pos >= 100) return;
@@ -2501,7 +2503,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
         for (int i = 0; i < jj_expentries.size(); i++) {
             exptokseq[i] = (String[]) jj_expentries.get(i);
         }
-        System.out.println();
+
         return new ParseException(token, null, tokenImage);
     }
 

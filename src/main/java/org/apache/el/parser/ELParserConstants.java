@@ -13,54 +13,54 @@ public interface ELParserConstants {
      */
     String EOF = "<EOF>";
     String LITERAL_EXPRESSION = "<LITERAL_EXPRESSION>";
-    String START_DYNAMIC_EXPRESSION = "\"${\"";
-    String START_DEFERRED_EXPRESSION = "\"#{\"";
+    String START_DYNAMIC_EXPRESSION = "${";
+    String START_DEFERRED_EXPRESSION = "#{";
     String INTEGER_LITERAL = "<INTEGER_LITERAL>";
     String FLOATING_POINT_LITERAL = "<FLOATING_POINT_LITERAL>";
     String EXPONENT = "<EXPONENT>";
     String STRING_LITERAL = "<STRING_LITERAL>";
-    String TRUE = "\"true\"";
-    String FALSE = "\"false\"";
-    String NULL = "\"null\"";
-    String END_EXPRESSION = "\"}\"";
-    String DOT = "\".\"";
-    String LPAREN = "\"(\"";
-    String RPAREN = "\")\"";
-    String LBRACK = "\"[\"";
-    String RBRACK = "\"]\"";
-    String COLON = "\":\"";
-    String COMMA = "\",\"";
-    String GT0 = "\">\"";
-    String GT1 = "\"gt\"";
-    String LT0 = "\"<\"";
-    String LT1 = "\"lt\"";
-    String GE0 = "\">=\"";
-    String GE1 = "\"ge\"";
-    String LE0 = "\"<=\"";
-    String LE1 = "\"le\"";
-    String EQ0 = "\"==\"";
-    String EQ1 = "\"eq\"";
-    String NE0 = "\"!=\"";
-    String NE1 = "\"ne\"";
-    String NOT0 = "\"!\"";
-    String NOT1 = "\"not\"";
-    String AND0 = "\"&&\"";
-    String AND1 = "\"and\"";
-    String OR0 = "\"||\"";
-    String OR1 = "\"or\"";
-    String EMPTY = "\"empty\"";
-    String INSTANCEOF = "\"instanceof\"";
-    String MULT = "\"*\"";
-    String PLUS = "\"+\"";
-    String MINUS = "\"-\"";
-    String QUESTIONMARK = "\"?\"";
-    String DIV0 = "\"/\"";
-    String DIV1 = "\"div\"";
-    String MOD0 = "\"%\"";
-    String MOD1 = "\"mod\"";
+    String TRUE = "true";
+    String FALSE = "false";
+    String NULL = "null";
+    String END_EXPRESSION = "}";
+    String DOT = ".";
+    String LPAREN = "(";
+    String RPAREN = ")";
+    String LBRACK = "[";
+    String RBRACK = "]";
+    String COLON = ":";
+    String COMMA = ",";
+    String GT0 = ">";
+    String GT1 = "gt";
+    String LT0 = "<";
+    String LT1 = "lt";
+    String GE0 = ">=";
+    String GE1 = "ge";
+    String LE0 = "<=";
+    String LE1 = "le";
+    String EQ0 = "==";
+    String EQ1 = "eq";
+    String NE0 = "!=";
+    String NE1 = "ne";
+    String NOT0 = "!";
+    String NOT1 = "not";
+    String AND0 = "&&";
+    String AND1 = "and";
+    String OR0 = "||";
+    String OR1 = "or";
+    String EMPTY = "empty";
+    String INSTANCEOF = "instanceof";
+    String MULT = "*";
+    String PLUS = "+";
+    String MINUS = "-";
+    String QUESTIONMARK = "?";
+    String DIV0 = "/";
+    String DIV1 = "div";
+    String MOD0 = "%";
+    String MOD1 = "mod";
     String IDENTIFIER = "<IDENTIFIER>";
     String FUNCTIONSUFFIX = "<FUNCTIONSUFFIX>";
-    String IMPL_OBJ_START = "\"#\"";
+    String IMPL_OBJ_START = "#";
     String LETTER = "<LETTER>";
     String DIGIT = "<DIGIT>";
     String ILLEGAL_CHARACTER = "<ILLEGAL_CHARACTER>";
@@ -80,58 +80,58 @@ public interface ELParserConstants {
     String[] tokenImage = {
             "<EOF>",
             "<LITERAL_EXPRESSION>",
-            "\"${\"",
-            "\"#{\"",
-            "\" \"",
-            "\"\\t\"",
-            "\"\\n\"",
-            "\"\\r\"",
+            "${",
+            "#{",
+            " ",
+            "\\t",
+            "\\n",
+            "\\r",
             "<INTEGER_LITERAL>",
             "<FLOATING_POINT_LITERAL>",
             "<EXPONENT>",
-            "<_LITERAL>",
-            "\"true\"",
-            "\"false\"",
-            "\"null\"",
-            "\"}\"",
-            "\".\"",
-            "\"(\"",
-            "\")\"",
-            "\"[\"",
-            "\"]\"",
-            "\":\"",
-            "\",\"",
-            "\">\"",
-            "\"gt\"",
-            "\"<\"",
-            "\"lt\"",
-            "\">=\"",
-            "\"ge\"",
-            "\"<=\"",
-            "\"le\"",
-            "\"==\"",
-            "\"eq\"",
-            "\"!=\"",
-            "\"ne\"",
-            "\"!\"",
-            "\"not\"",
-            "\"&&\"",
-            "\"and\"",
-            "\"||\"",
-            "\"or\"",
-            "\"empty\"",
-            "\"instanceof\"",
-            "\"*\"",
-            "\"+\"",
-            "\"-\"",
-            "\"?\"",
-            "\"/\"",
-            "\"div\"",
-            "\"%\"",
-            "\"mod\"",
+            "<STRING_LITERAL>",
+            "true",
+            "false",
+            "null",
+            "}",
+            ".",
+            "(",
+            ")",
+            "[",
+            "]",
+            ":",
+            ",",
+            ">",
+            "gt",
+            "<",
+            "lt",
+            ">=",
+            "ge",
+            "<=",
+            "le",
+            "==",
+            "eq",
+            "!=",
+            "ne",
+            "!",
+            "not",
+            "&&",
+            "and",
+            "||",
+            "or",
+            "empty",
+            "instanceof",
+            "*",
+            "+",
+            "-",
+            "?",
+            "/",
+            "div",
+            "%",
+            "mod",
             "<IDENTIFIER>",
             "<FUNCTIONSUFFIX>",
-            "\"#\"",
+            "#",
             "<LETTER>",
             "<DIGIT>",
             "<ILLEGAL_CHARACTER>",
