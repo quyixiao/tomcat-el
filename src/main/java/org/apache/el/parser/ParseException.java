@@ -27,7 +27,7 @@ public class ParseException extends Exception {
    * "expectedTokenSequences", and "tokenImage" set.
    */
   public ParseException(Token currentTokenVal,
-                        int[][] expectedTokenSequencesVal,
+                        String[][] expectedTokenSequencesVal,
                         String[] tokenImageVal
                        )
   {
@@ -69,7 +69,7 @@ public class ParseException extends Exception {
    * of integers represents a sequence of tokens (by their ordinal
    * values) that is expected at this point of the parse.
    */
-  public int[][] expectedTokenSequences;
+  public String[][] expectedTokenSequences;
 
   /**
    * This is a reference to the "tokenImage" array of the generated
@@ -86,7 +86,7 @@ public class ParseException extends Exception {
    * gets displayed.
    */
   private static String initialise(Token currentToken,
-                           int[][] expectedTokenSequences,
+                           String[][] expectedTokenSequences,
                            String[] tokenImage) {
     String eol = System.getProperty("line.separator", "\n");
     StringBuffer expected = new StringBuffer();
@@ -96,9 +96,9 @@ public class ParseException extends Exception {
         maxSize = expectedTokenSequences[i].length;
       }
       for (int j = 0; j < expectedTokenSequences[i].length; j++) {
-        expected.append(tokenImage[expectedTokenSequences[i][j]]).append(' ');
+        expected.append(expectedTokenSequences[i][j]).append(' ');
       }
-      if (expectedTokenSequences[i][expectedTokenSequences[i].length - 1] != 0) {
+      if (!Utils.eq(expectedTokenSequences[i][expectedTokenSequences[i].length - 1], ELParserConstants.EOF)) {
         expected.append("...");
       }
       expected.append(eol).append("    ");
@@ -107,11 +107,11 @@ public class ParseException extends Exception {
     Token tok = currentToken.next;
     for (int i = 0; i < maxSize; i++) {
       if (i != 0) retval += " ";
-      if (tok.kind == 0) {
+      if (Utils.eq(tok.kind,ELParserConstants.EOF)) {
         retval += tokenImage[0];
         break;
       }
-      retval += " " + tokenImage[tok.kind];
+      retval += " " + tok.kind;
       retval += " \"";
       retval += add_escapes(tok.image);
       retval += " \"";

@@ -20,7 +20,7 @@ public class Token implements java.io.Serializable {
    * system is determined by JavaCCParser, and a table of these numbers is
    * stored in the file ...Constants.java.
    */
-  public int kind;
+  public String kind;
 
   /** The line number of the first character of this Token. */
   public int beginLine;
@@ -80,7 +80,7 @@ public class Token implements java.io.Serializable {
   /**
    * Constructs a new token for the specified Image.
    */
-  public Token(int kind)
+  public Token(String kind)
   {
     this(kind, null);
   }
@@ -88,7 +88,7 @@ public class Token implements java.io.Serializable {
   /**
    * Constructs a new token for the specified Image and Kind.
    */
-  public Token(int kind, String image)
+  public Token(String kind, String image)
   {
     this.kind = kind;
     this.image = image;
@@ -114,7 +114,7 @@ public class Token implements java.io.Serializable {
    * to the following switch statement. Then you can cast matchedToken
    * variable to the appropriate type and use sit in your lexical actions.
    */
-  public static Token newToken(int ofKind, String image)
+  public static Token newToken(String ofKind, String image)
   {
     switch(ofKind)
     {
@@ -122,7 +122,7 @@ public class Token implements java.io.Serializable {
     }
   }
 
-  public static Token newToken(int ofKind)
+  public static Token newToken(String ofKind)
   {
     return newToken(ofKind, null);
   }

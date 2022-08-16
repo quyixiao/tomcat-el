@@ -8,181 +8,134 @@ package org.apache.el.parser;
  */
 public interface ELParserConstants {
 
-  /** End of File. */
-  int EOF = 0;
-  /** RegularExpression Id. */
-  int LITERAL_EXPRESSION = 1;
-  /** RegularExpression Id. */
-  int START_DYNAMIC_EXPRESSION = 2;
-  /** RegularExpression Id. */
-  int START_DEFERRED_EXPRESSION = 3;
-  /** RegularExpression Id. */
-  int INTEGER_LITERAL = 8;
-  /** RegularExpression Id. */
-  int FLOATING_POINT_LITERAL = 9;
-  /** RegularExpression Id. */
-  int EXPONENT = 10;
-  /** RegularExpression Id. */
-  int STRING_LITERAL = 11;
-  /** RegularExpression Id. */
-  int TRUE = 12;
-  /** RegularExpression Id. */
-  int FALSE = 13;
-  /** RegularExpression Id. */
-  int NULL = 14;
-  /** RegularExpression Id. */
-  int END_EXPRESSION = 15;
-  /** RegularExpression Id. */
-  int DOT = 16;
-  /** RegularExpression Id. */
-  int LPAREN = 17;
-  /** RegularExpression Id. */
-  int RPAREN = 18;
-  /** RegularExpression Id. */
-  int LBRACK = 19;
-  /** RegularExpression Id. */
-  int RBRACK = 20;
-  /** RegularExpression Id. */
-  int COLON = 21;
-  /** RegularExpression Id. */
-  int COMMA = 22;
-  /** RegularExpression Id. */
-  int GT0 = 23;
-  /** RegularExpression Id. */
-  int GT1 = 24;
-  /** RegularExpression Id. */
-  int LT0 = 25;
-  /** RegularExpression Id. */
-  int LT1 = 26;
-  /** RegularExpression Id. */
-  int GE0 = 27;
-  /** RegularExpression Id. */
-  int GE1 = 28;
-  /** RegularExpression Id. */
-  int LE0 = 29;
-  /** RegularExpression Id. */
-  int LE1 = 30;
-  /** RegularExpression Id. */
-  int EQ0 = 31;
-  /** RegularExpression Id. */
-  int EQ1 = 32;
-  /** RegularExpression Id. */
-  int NE0 = 33;
-  /** RegularExpression Id. */
-  int NE1 = 34;
-  /** RegularExpression Id. */
-  int NOT0 = 35;
-  /** RegularExpression Id. */
-  int NOT1 = 36;
-  /** RegularExpression Id. */
-  int AND0 = 37;
-  /** RegularExpression Id. */
-  int AND1 = 38;
-  /** RegularExpression Id. */
-  int OR0 = 39;
-  /** RegularExpression Id. */
-  int OR1 = 40;
-  /** RegularExpression Id. */
-  int EMPTY = 41;
-  /** RegularExpression Id. */
-  int INSTANCEOF = 42;
-  /** RegularExpression Id. */
-  int MULT = 43;
-  /** RegularExpression Id. */
-  int PLUS = 44;
-  /** RegularExpression Id. */
-  int MINUS = 45;
-  /** RegularExpression Id. */
-  int QUESTIONMARK = 46;
-  /** RegularExpression Id. */
-  int DIV0 = 47;
-  /** RegularExpression Id. */
-  int DIV1 = 48;
-  /** RegularExpression Id. */
-  int MOD0 = 49;
-  /** RegularExpression Id. */
-  int MOD1 = 50;
-  /** RegularExpression Id. */
-  int IDENTIFIER = 51;
-  /** RegularExpression Id. */
-  int FUNCTIONSUFFIX = 52;
-  /** RegularExpression Id. */
-  int IMPL_OBJ_START = 53;
-  /** RegularExpression Id. */
-  int LETTER = 54;
-  /** RegularExpression Id. */
-  int DIGIT = 55;
-  /** RegularExpression Id. */
-  int ILLEGAL_CHARACTER = 56;
+    /**
+     * End of File.
+     */
+    String EOF = "<EOF>";
+    String LITERAL_EXPRESSION = "<LITERAL_EXPRESSION>";
+    String START_DYNAMIC_EXPRESSION = "\"${\"";
+    String START_DEFERRED_EXPRESSION = "\"#{\"";
+    String INTEGER_LITERAL = "<INTEGER_LITERAL>";
+    String FLOATING_POINT_LITERAL = "<FLOATING_POINT_LITERAL>";
+    String EXPONENT = "<EXPONENT>";
+    String STRING_LITERAL = "<STRING_LITERAL>";
+    String TRUE = "\"true\"";
+    String FALSE = "\"false\"";
+    String NULL = "\"null\"";
+    String END_EXPRESSION = "\"}\"";
+    String DOT = "\".\"";
+    String LPAREN = "\"(\"";
+    String RPAREN = "\")\"";
+    String LBRACK = "\"[\"";
+    String RBRACK = "\"]\"";
+    String COLON = "\":\"";
+    String COMMA = "\",\"";
+    String GT0 = "\">\"";
+    String GT1 = "\"gt\"";
+    String LT0 = "\"<\"";
+    String LT1 = "\"lt\"";
+    String GE0 = "\">=\"";
+    String GE1 = "\"ge\"";
+    String LE0 = "\"<=\"";
+    String LE1 = "\"le\"";
+    String EQ0 = "\"==\"";
+    String EQ1 = "\"eq\"";
+    String NE0 = "\"!=\"";
+    String NE1 = "\"ne\"";
+    String NOT0 = "\"!\"";
+    String NOT1 = "\"not\"";
+    String AND0 = "\"&&\"";
+    String AND1 = "\"and\"";
+    String OR0 = "\"||\"";
+    String OR1 = "\"or\"";
+    String EMPTY = "\"empty\"";
+    String INSTANCEOF = "\"instanceof\"";
+    String MULT = "\"*\"";
+    String PLUS = "\"+\"";
+    String MINUS = "\"-\"";
+    String QUESTIONMARK = "\"?\"";
+    String DIV0 = "\"/\"";
+    String DIV1 = "\"div\"";
+    String MOD0 = "\"%\"";
+    String MOD1 = "\"mod\"";
+    String IDENTIFIER = "<IDENTIFIER>";
+    String FUNCTIONSUFFIX = "<FUNCTIONSUFFIX>";
+    String IMPL_OBJ_START = "\"#\"";
+    String LETTER = "<LETTER>";
+    String DIGIT = "<DIGIT>";
+    String ILLEGAL_CHARACTER = "<ILLEGAL_CHARACTER>";
 
-  /** Lexical state. */
-  int DEFAULT = 0;
-  /** Lexical state. */
-  int IN_EXPRESSION = 1;
+    /**
+     * Lexical state.
+     */
+    int DEFAULT = 0;
+    /**
+     * Lexical state.
+     */
+    int IN_EXPRESSION = 1;
 
-  /** Literal token values. */
-  String[] tokenImage = {
-    "<EOF>",
-    "<LITERAL_EXPRESSION>",
-    "\"${\"",
-    "\"#{\"",
-    "\" \"",
-    "\"\\t\"",
-    "\"\\n\"",
-    "\"\\r\"",
-    "<INTEGER_LITERAL>",
-    "<FLOATING_POINT_LITERAL>",
-    "<EXPONENT>",
-    "<STRING_LITERAL>",
-    "\"true\"",
-    "\"false\"",
-    "\"null\"",
-    "\"}\"",
-    "\".\"",
-    "\"(\"",
-    "\")\"",
-    "\"[\"",
-    "\"]\"",
-    "\":\"",
-    "\",\"",
-    "\">\"",
-    "\"gt\"",
-    "\"<\"",
-    "\"lt\"",
-    "\">=\"",
-    "\"ge\"",
-    "\"<=\"",
-    "\"le\"",
-    "\"==\"",
-    "\"eq\"",
-    "\"!=\"",
-    "\"ne\"",
-    "\"!\"",
-    "\"not\"",
-    "\"&&\"",
-    "\"and\"",
-    "\"||\"",
-    "\"or\"",
-    "\"empty\"",
-    "\"instanceof\"",
-    "\"*\"",
-    "\"+\"",
-    "\"-\"",
-    "\"?\"",
-    "\"/\"",
-    "\"div\"",
-    "\"%\"",
-    "\"mod\"",
-    "<IDENTIFIER>",
-    "<FUNCTIONSUFFIX>",
-    "\"#\"",
-    "<LETTER>",
-    "<DIGIT>",
-    "<ILLEGAL_CHARACTER>",
-  };
+    /**
+     * Literal token values.
+     */
+    String[] tokenImage = {
+            "<EOF>",
+            "<LITERAL_EXPRESSION>",
+            "\"${\"",
+            "\"#{\"",
+            "\" \"",
+            "\"\\t\"",
+            "\"\\n\"",
+            "\"\\r\"",
+            "<INTEGER_LITERAL>",
+            "<FLOATING_POINT_LITERAL>",
+            "<EXPONENT>",
+            "<_LITERAL>",
+            "\"true\"",
+            "\"false\"",
+            "\"null\"",
+            "\"}\"",
+            "\".\"",
+            "\"(\"",
+            "\")\"",
+            "\"[\"",
+            "\"]\"",
+            "\":\"",
+            "\",\"",
+            "\">\"",
+            "\"gt\"",
+            "\"<\"",
+            "\"lt\"",
+            "\">=\"",
+            "\"ge\"",
+            "\"<=\"",
+            "\"le\"",
+            "\"==\"",
+            "\"eq\"",
+            "\"!=\"",
+            "\"ne\"",
+            "\"!\"",
+            "\"not\"",
+            "\"&&\"",
+            "\"and\"",
+            "\"||\"",
+            "\"or\"",
+            "\"empty\"",
+            "\"instanceof\"",
+            "\"*\"",
+            "\"+\"",
+            "\"-\"",
+            "\"?\"",
+            "\"/\"",
+            "\"div\"",
+            "\"%\"",
+            "\"mod\"",
+            "<IDENTIFIER>",
+            "<FUNCTIONSUFFIX>",
+            "\"#\"",
+            "<LETTER>",
+            "<DIGIT>",
+            "<ILLEGAL_CHARACTER>",
+    };
 
 
-  public static void main(String[] args) {
-
-  }
 }
