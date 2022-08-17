@@ -155,7 +155,7 @@ public class ELParserTokenManager implements ELParserConstants {
                             jjCheckNAddStates(0, 4);
                             if ((0xffffffffefffffffL & l) != 0L)
                                 jjCheckNAddTwoStates(0, 1);
-                            else if (curChar == 92) {
+                            else if (curChar == 92) {                           // 反斜杠 \
                                 if (ELParser.getKindPos(kind) > 1)
                                     kind = ELParserConstants.LITERAL_EXPRESSION;
                                 jjCheckNAddStates(14, 17);
@@ -416,27 +416,27 @@ public class ELParserTokenManager implements ELParserConstants {
         switch (curChar) {
             case '&':
                 if ((active0 & 0x2000000000L) != 0L)
-                    return jjStopAtPos(1, AND0);
+                    return jjStopAtPos(1, AND0);               // &&
                 break;
             case '=':
-                if ((active0 & 0x8000000L) != 0L)
+                if ((active0 & 0x8000000L) != 0L)                   // >=
                     return jjStopAtPos(1, GE0);
-                else if ((active0 & 0x20000000L) != 0L)
+                else if ((active0 & 0x20000000L) != 0L)             // <=
                     return jjStopAtPos(1, LE0);
-                else if ((active0 & 0x80000000L) != 0L)
+                else if ((active0 & 0x80000000L) != 0L)             // ==
                     return jjStopAtPos(1, EQ0);
-                else if ((active0 & 0x200000000L) != 0L)
+                else if ((active0 & 0x200000000L) != 0L)            // !
                     return jjStopAtPos(1, NE0);
                 break;
             case 'a':
                 return jjMoveStringLiteralDfa2_1(active0, 0x2000L);
             case 'e':
                 if ((active0 & 0x10000000L) != 0L)
-                    return jjStartNfaWithStates_1(1, GE1, 30);
+                    return jjStartNfaWithStates_1(1, GE1, 30);  // ge
                 else if ((active0 & 0x40000000L) != 0L)
-                    return jjStartNfaWithStates_1(1, LE1, 30);
-                else if ((active0 & 0x400000000L) != 0L)
-                    return jjStartNfaWithStates_1(1, NE1, 30);
+                    return jjStartNfaWithStates_1(1, LE1, 30);  // le
+                else if ((active0 & 0x400000000L) != 0L)        //
+                    return jjStartNfaWithStates_1(1, NE1, 30);  // ne
                 break;
             case 'i':
                 return jjMoveStringLiteralDfa2_1(active0, 0x1000000000000L);
@@ -484,9 +484,9 @@ public class ELParserTokenManager implements ELParserConstants {
         switch (curChar) {
             case 'd':
                 if ((active0 & 0x4000000000L) != 0L)
-                    return jjStartNfaWithStates_1(2, AND1, 30);
+                    return jjStartNfaWithStates_1(2, AND1, 30);     // and
                 else if ((active0 & 0x4000000000000L) != 0L)
-                    return jjStartNfaWithStates_1(2, MOD1, 30);
+                    return jjStartNfaWithStates_1(2, MOD1, 30);     // mod
                 break;
             case 'l':
                 return jjMoveStringLiteralDfa3_1(active0, 0x6000L);

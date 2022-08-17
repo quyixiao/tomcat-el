@@ -11,59 +11,59 @@ public interface ELParserConstants {
     /**
      * End of File.
      */
-    String EOF = "<EOF>";
-    String LITERAL_EXPRESSION = "<LITERAL_EXPRESSION>";
-    String START_DYNAMIC_EXPRESSION = "${";
-    String START_DEFERRED_EXPRESSION = "#{";
-    String INTEGER_LITERAL = "<INTEGER_LITERAL>";
-    String FLOATING_POINT_LITERAL = "<FLOATING_POINT_LITERAL>";
-    String EXPONENT = "<EXPONENT>";
-    String STRING_LITERAL = "<STRING_LITERAL>";
-    String TRUE = "true";
-    String FALSE = "false";
-    String NULL = "null";
-    String END_EXPRESSION = "}";
-    String DOT = ".";
-    String LPAREN = "(";
-    String RPAREN = ")";
-    String LBRACK = "[";
-    String RBRACK = "]";
-    String COLON = ":";
-    String COMMA = ",";
-    String GT0 = ">";
-    String GT1 = "gt";
-    String LT0 = "<";
-    String LT1 = "lt";
-    String GE0 = ">=";
-    String GE1 = "ge";
-    String LE0 = "<=";
-    String LE1 = "le";
-    String EQ0 = "==";
-    String EQ1 = "eq";
-    String NE0 = "!=";
-    String NE1 = "ne";
-    String NOT0 = "!";
-    String NOT1 = "not";
-    String AND0 = "&&";
-    String AND1 = "and";
-    String OR0 = "||";
-    String OR1 = "or";
-    String EMPTY = "empty";
-    String INSTANCEOF = "instanceof";
-    String MULT = "*";
-    String PLUS = "+";
-    String MINUS = "-";
-    String QUESTIONMARK = "?";
-    String DIV0 = "/";
-    String DIV1 = "div";
-    String MOD0 = "%";
-    String MOD1 = "mod";
-    String IDENTIFIER = "<IDENTIFIER>";
-    String FUNCTIONSUFFIX = "<FUNCTIONSUFFIX>";
-    String IMPL_OBJ_START = "#";
-    String LETTER = "<LETTER>";
-    String DIGIT = "<DIGIT>";
-    String ILLEGAL_CHARACTER = "<ILLEGAL_CHARACTER>";
+    String EOF = "<EOF>";                                                       // 0
+    String LITERAL_EXPRESSION = "<LITERAL_EXPRESSION>";                         // 1
+    String START_DYNAMIC_EXPRESSION = "${";                                     // 2
+    String START_DEFERRED_EXPRESSION = "#{";                                    // 3
+    String INTEGER_LITERAL = "<INTEGER_LITERAL>";                               // 8
+    String FLOATING_POINT_LITERAL = "<FLOATING_POINT_LITERAL>";                 // 9
+    String EXPONENT = "<EXPONENT>";                                             // 10
+    String STRING_LITERAL = "<STRING_LITERAL>";                                 // 11
+    String TRUE = "true";                                                       // 12
+    String FALSE = "false";                                                     // 13
+    String NULL = "null";                                                       // 14
+    String END_EXPRESSION = "}";                                                // 15
+    String DOT = ".";                                                           // 16
+    String LPAREN = "(";                                                        // 17
+    String RPAREN = ")";                                                        // 18
+    String LBRACK = "[";                                                        // 19
+    String RBRACK = "]";                                                        // 20
+    String COLON = ":";                                                         // 21
+    String COMMA = ",";                                                         // 22
+    String GT0 = ">";                                                           // 23
+    String GT1 = "gt";                                                          // 24
+    String LT0 = "<";                                                           // 25
+    String LT1 = "lt";                                                          // 26
+    String GE0 = ">=";                                                          // 27
+    String GE1 = "ge";                                                          // 28
+    String LE0 = "<=";                                                          // 29
+    String LE1 = "le";                                                          // 30
+    String EQ0 = "==";                                                          // 31
+    String EQ1 = "eq";                                                          // 32
+    String NE0 = "!=";                                                          // 33
+    String NE1 = "ne";                                                          // 34
+    String NOT0 = "!";                                                          // 35
+    String NOT1 = "not";                                                        // 36
+    String AND0 = "&&";                                                         // 37
+    String AND1 = "and";                                                        // 38
+    String OR0 = "||";                                                          // 39
+    String OR1 = "or";                                                          // 40
+    String EMPTY = "empty";                                                     // 41
+    String INSTANCEOF = "instanceof";                                           // 42
+    String MULT = "*";                                                          // 43
+    String PLUS = "+";                                                          // 44
+    String MINUS = "-";                                                         // 45
+    String QUESTIONMARK = "?";                                                  // 46
+    String DIV0 = "/";                                                          // 47
+    String DIV1 = "div";                                                        // 48
+    String MOD0 = "%";                                                          // 49
+    String MOD1 = "mod";                                                        // 50
+    String IDENTIFIER = "<IDENTIFIER>";                                         // 51
+    String FUNCTIONSUFFIX = "<FUNCTIONSUFFIX>";                                 // 52
+    String IMPL_OBJ_START = "#";                                                // 53
+    String LETTER = "<LETTER>";                                                 // 54
+    String DIGIT = "<DIGIT>";                                                   // 55
+    String ILLEGAL_CHARACTER = "<ILLEGAL_CHARACTER>";                           // 56
 
     /**
      * Lexical state.
