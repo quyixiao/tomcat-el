@@ -65,9 +65,9 @@ public class ELParserTokenManager implements ELParserConstants {
         switch (curChar) {
             case '{':
                 if ((active0 & 0x4L) != 0L)
-                    return jjStopAtPos(1, START_DYNAMIC_EXPRESSION);
+                    return jjStopAtPos(1, START_DYNAMIC_EXPRESSION); // ${
                 else if ((active0 & 0x8L) != 0L)
-                    return jjStopAtPos(1, START_DEFERRED_EXPRESSION);
+                    return jjStopAtPos(1, START_DEFERRED_EXPRESSION); // #{
                 break;
             default:
                 break;
@@ -370,11 +370,11 @@ public class ELParserTokenManager implements ELParserConstants {
                 jjmatchedKind = GT0;
                 return jjMoveStringLiteralDfa1_1(0x8000000L);
             case '?':
-                return jjStopAtPos(0, QUESTIONMARK);
+                return jjStopAtPos(0, QUESTIONMARK); // ?
             case '[':
-                return jjStopAtPos(0, LBRACK);
+                return jjStopAtPos(0, LBRACK); // [
             case ']':
-                return jjStopAtPos(0, RBRACK);
+                return jjStopAtPos(0, RBRACK); // ]
             case 'a':
                 return jjMoveStringLiteralDfa1_1(0x4000000000L);
             case 'd':
@@ -400,7 +400,7 @@ public class ELParserTokenManager implements ELParserConstants {
             case '|':
                 return jjMoveStringLiteralDfa1_1(0x8000000000L);
             case '}':
-                return jjStopAtPos(0, END_EXPRESSION);
+                return jjStopAtPos(0, END_EXPRESSION);  // }
             default:
                 return jjMoveNfa_1(0, 0);
         }
