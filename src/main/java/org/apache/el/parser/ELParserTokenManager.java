@@ -96,46 +96,46 @@ public class ELParserTokenManager implements ELParserConstants {
                 do {
                     switch (jjstateSet[--i]) {
                         case 7:
-                            if ((0xffffffe7ffffffffL & l) != 0L) {
+                            if ((0xffffffe7ffffffffL & l) != 0L) {          // 如果 0 ~ 63 , curChar 非 # $
                                 if (ELParser.getKindPos(kind) > 1)
                                     kind = ELParserConstants.LITERAL_EXPRESSION;
                                 jjCheckNAddStates(0, 4);
-                            } else if ((0x1800000000L & l) != 0L) {
+                            } else if ((0x1800000000L & l) != 0L) {         // 如果curChar 为 # $
                                 if (ELParser.getKindPos(kind) > 1)
                                     kind = ELParserConstants.LITERAL_EXPRESSION;
                                 jjCheckNAdd(5);
                             }
-                            if ((0xffffffe7ffffffffL & l) != 0L)
+                            if ((0xffffffe7ffffffffL & l) != 0L)            // 如果curChar 非 # $
                                 jjCheckNAddTwoStates(0, 1);
                             break;
                         case 0:
-                            if ((0xffffffe7ffffffffL & l) != 0L)
+                            if ((0xffffffe7ffffffffL & l) != 0L)            // 如果curChar 非 # $
                                 jjCheckNAddTwoStates(0, 1);
                             break;
                         case 2:
-                            if ((0xffffffe7ffffffffL & l) == 0L)
+                            if ((0xffffffe7ffffffffL & l) == 0L)            // 如果curChar 为 # $
                                 break;
                             if (ELParser.getKindPos(kind) > 1)
                                 kind = ELParserConstants.LITERAL_EXPRESSION;
                             jjCheckNAddStates(0, 4);
                             break;
                         case 3:
-                            if ((0xffffffe7ffffffffL & l) != 0L)
+                            if ((0xffffffe7ffffffffL & l) != 0L)            // 如果curChar 非 # $
                                 jjCheckNAddTwoStates(3, 4);
                             break;
                         case 4:
-                            if ((0x1800000000L & l) != 0L)
+                            if ((0x1800000000L & l) != 0L)                  // 如果curChar 为 # $
                                 jjCheckNAdd(5);
                             break;
                         case 5:
-                            if ((0xffffffe7ffffffffL & l) == 0L)
+                            if ((0xffffffe7ffffffffL & l) == 0L)            // 如果curChar 为 # $
                                 break;
                             if (ELParser.getKindPos(kind) > 1)
                                 kind = ELParserConstants.LITERAL_EXPRESSION;
                             jjCheckNAddStates(5, 8);
                             break;
                         case 6:
-                            if ((0x1800000000L & l) == 0L)
+                            if ((0x1800000000L & l) == 0L)                  // 如果curChar 非 # $
                                 break;
                             if (ELParser.getKindPos(kind) > 1)
                                 kind = ELParserConstants.LITERAL_EXPRESSION;
@@ -153,7 +153,7 @@ public class ELParserTokenManager implements ELParserConstants {
                             if (ELParser.getKindPos(kind) > 1)
                                 kind = ELParserConstants.LITERAL_EXPRESSION;
                             jjCheckNAddStates(0, 4);
-                            if ((0xffffffffefffffffL & l) != 0L)
+                            if ((0xffffffffefffffffL & l) != 0L)   // 如果curChar 为 @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~ 
                                 jjCheckNAddTwoStates(0, 1);
                             else if (curChar == 92) {                           // 反斜杠 \
                                 if (ELParser.getKindPos(kind) > 1)
@@ -162,11 +162,11 @@ public class ELParserTokenManager implements ELParserConstants {
                             }
                             break;
                         case 0:
-                            if ((0xffffffffefffffffL & l) != 0L)
+                            if ((0xffffffffefffffffL & l) != 0L) //如果curChar 为 @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~ 
                                 jjCheckNAddTwoStates(0, 1);
                             break;
                         case 1:
-                            if (curChar != 92)
+                            if (curChar != 92)                          // 反斜杠 \
                                 break;
                             if (ELParser.getKindPos(kind) > 1)
                                 kind = ELParserConstants.LITERAL_EXPRESSION;
@@ -181,7 +181,7 @@ public class ELParserTokenManager implements ELParserConstants {
                             jjCheckNAddTwoStates(3, 4);
                             break;
                         case 5:
-                            if ((0xf7ffffffefffffffL & l) == 0L)
+                            if ((0xf7ffffffefffffffL & l) == 0L)            // 如果curChar 为 \ {
                                 break;
                             if (ELParser.getKindPos(kind) > 1)
                                 kind = ELParserConstants.LITERAL_EXPRESSION;
@@ -241,7 +241,11 @@ public class ELParserTokenManager implements ELParserConstants {
                 kind = "0x7fffffff";
             }
             ++curPos;
-            if ((i = jjnewStateCnt) == (startsAt = 8 - (jjnewStateCnt = startsAt)))
+            i = jjnewStateCnt;
+            jjnewStateCnt = startsAt;
+            startsAt = 8 - startsAt;
+            //if ((i = jjnewStateCnt) == (startsAt = 8 - (jjnewStateCnt = startsAt)))
+            if(i == startsAt)
                 return curPos;
             try {
                 curChar = input_stream.readChar();
@@ -337,7 +341,7 @@ public class ELParserTokenManager implements ELParserConstants {
     private int jjMoveStringLiteralDfa0_1() {
         switch (curChar) {
             case '!':
-                jjmatchedKind = NOT0;
+                jjmatchedKind = NOT0;       // !
                 return jjMoveStringLiteralDfa1_1(0x200000000L);
             case '%':
                 return jjStopAtPos(0, MOD0);
@@ -448,23 +452,23 @@ public class ELParserTokenManager implements ELParserConstants {
                 return jjMoveStringLiteralDfa2_1(active0, 0x4001000000000L);
             case 'q':
                 if ((active0 & 0x100000000L) != 0L)
-                    return jjStartNfaWithStates_1(1, EQ1, 30);
+                    return jjStartNfaWithStates_1(1, EQ1, 30);      // eq
                 break;
             case 'r':
                 if ((active0 & 0x10000000000L) != 0L)
-                    return jjStartNfaWithStates_1(1, OR1, 30);
+                    return jjStartNfaWithStates_1(1, OR1, 30);      // or
                 return jjMoveStringLiteralDfa2_1(active0, 0x1000L);
             case 't':
                 if ((active0 & 0x1000000L) != 0L)
-                    return jjStartNfaWithStates_1(1, GT1, 30);
+                    return jjStartNfaWithStates_1(1, GT1, 30);      // gt
                 else if ((active0 & 0x4000000L) != 0L)
-                    return jjStartNfaWithStates_1(1, LT1, 30);
+                    return jjStartNfaWithStates_1(1, LT1, 30);      // lt
                 break;
             case 'u':
                 return jjMoveStringLiteralDfa2_1(active0, 0x4000L);
             case '|':
                 if ((active0 & 0x8000000000L) != 0L)
-                    return jjStopAtPos(1, OR0);
+                    return jjStopAtPos(1, OR0);                            // ||
                 break;
             default:
                 break;
@@ -700,11 +704,11 @@ public class ELParserTokenManager implements ELParserConstants {
                 do {
                     switch (jjstateSet[--i]) {
                         case 0:
-                            if ((0x3ff000000000000L & l) != 0L) {
+                            if ((0x3ff000000000000L & l) != 0L) {            // 如果curChar 为 0 1 2 3 4 5 6 7 8 9
                                 if (ELParser.getKindPos(kind) > 8)
                                     kind = INTEGER_LITERAL;
                                 jjCheckNAddStates(18, 22);
-                            } else if ((0x1800000000L & l) != 0L) {
+                            } else if ((0x1800000000L & l) != 0L) {           // 如果curChar 为 # $
                                 if (ELParser.getKindPos(kind) > 51)
                                     kind = IDENTIFIER;
                                 jjCheckNAddTwoStates(28, 29);
@@ -716,12 +720,12 @@ public class ELParserTokenManager implements ELParserConstants {
                                 jjCheckNAdd(1);
                             break;
                         case 30:
-                            if ((0x3ff001000000000L & l) != 0L) {
+                            if ((0x3ff001000000000L & l) != 0L) {                // 如果curChar 为 $ 0 1 2 3 4 5 6 7 8 9
                                 if (ELParser.getKindPos(kind) > 52)
                                     kind = FUNCTIONSUFFIX;
                                 jjCheckNAdd(29);
                             }
-                            if ((0x3ff001000000000L & l) != 0L) {
+                            if ((0x3ff001000000000L & l) != 0L) {               // 如果curChar 为 $ 0 1 2 3 4 5 6 7 8 9
                                 if (ELParser.getKindPos(kind) > 51)
                                     kind = IDENTIFIER;
                                 jjCheckNAdd(28);
@@ -730,54 +734,56 @@ public class ELParserTokenManager implements ELParserConstants {
                         case 1:
                             if ((0x3ff000000000000L & l) == 0L)
                                 break;
-                            if (ELParser.getKindPos(kind) > 9)
+                            if (ELParser.getKindPos(kind) > 9)                  // 如果curChar 为 0 1 2 3 4 5 6 7 8 9
                                 kind = FLOATING_POINT_LITERAL;
                             jjCheckNAddTwoStates(1, 2);
                             break;
                         case 3:
-                            if ((0x280000000000L & l) != 0L)
+                            if ((0x280000000000L & l) != 0L)                    // 如果curChar 为 + -
                                 jjCheckNAdd(4);
                             break;
                         case 4:
                             if ((0x3ff000000000000L & l) == 0L)
                                 break;
-                            if (ELParser.getKindPos(kind) > 9)
+                            if (ELParser.getKindPos(kind) > 9)                  // 如果curChar 为 0 1 2 3 4 5 6 7 8 9
                                 kind = FLOATING_POINT_LITERAL;
                             jjCheckNAdd(4);
                             break;
                         case 5:
-                            if (curChar == 34)
+                            if (curChar == 34)                                  // 双引号
                                 jjCheckNAddStates(26, 28);
                             break;
                         case 6:
-                            if ((0xfffffffbffffffffL & l) != 0L)
+                            if ((0xfffffffbffffffffL & l) != 0L)                // 如果curChar 非 "
                                 jjCheckNAddStates(26, 28);
                             break;
                         case 8:
-                            if ((0x8400000000L & l) != 0L)
+                            if ((0x8400000000L & l) != 0L)                      // 如果curChar 为 " '
                                 jjCheckNAddStates(26, 28);
                             break;
                         case 9:
-                            if (curChar == 34 && ELParser.getKindPos(kind) > 11)
+                            if (curChar == 34 && ELParser.getKindPos(kind) > 11)    // 如果curChar 为双引号
                                 kind = STRING_LITERAL;
                             break;
                         case 10:
-                            if (curChar == 39)
+                            if (curChar == 39)                                     // 单引号
                                 jjCheckNAddStates(23, 25);
                             break;
                         case 11:
+                            // 如果curChar 非 '
                             if ((0xffffff7fffffffffL & l) != 0L)
                                 jjCheckNAddStates(23, 25);
                             break;
                         case 13:
-                            if ((0x8400000000L & l) != 0L)
+                            if ((0x8400000000L & l) != 0L)                          // 如果curChar 为 " '
                                 jjCheckNAddStates(23, 25);
                             break;
                         case 14:
-                            if (curChar == 39 && ELParser.getKindPos(kind) > 11)
+                            if (curChar == 39 && ELParser.getKindPos(kind) > 11)    // 单引号
                                 kind = STRING_LITERAL;
                             break;
                         case 15:
+                            // 如果curChar 非 0 1 2 3 4 5 6 7 8 9
                             if ((0x3ff000000000000L & l) == 0L)
                                 break;
                             if (ELParser.getKindPos(kind) > 8)
@@ -785,74 +791,74 @@ public class ELParserTokenManager implements ELParserConstants {
                             jjCheckNAddStates(18, 22);
                             break;
                         case 16:
-                            if ((0x3ff000000000000L & l) == 0L)
+                            if ((0x3ff000000000000L & l) == 0L)            // 如果curChar 非 0 1 2 3 4 5 6 7 8 9
                                 break;
                             if (ELParser.getKindPos(kind) > 8)
                                 kind = INTEGER_LITERAL;
                             jjCheckNAdd(16);
                             break;
                         case 17:
-                            if ((0x3ff000000000000L & l) != 0L)
+                            if ((0x3ff000000000000L & l) != 0L)             // 如果curChar 为 0 1 2 3 4 5 6 7 8 9
                                 jjCheckNAddTwoStates(17, 18);
                             break;
                         case 18:
-                            if (curChar != 46)
+                            if (curChar != 46)                              // . 小数点
                                 break;
                             if (ELParser.getKindPos(kind) > 9)
                                 kind = FLOATING_POINT_LITERAL;
                             jjCheckNAddTwoStates(19, 20);
                             break;
                         case 19:
-                            if ((0x3ff000000000000L & l) == 0L)
+                            if ((0x3ff000000000000L & l) == 0L)                  // 如果curChar 非 0 1 2 3 4 5 6 7 8 9
                                 break;
                             if (ELParser.getKindPos(kind) > 9)
                                 kind = FLOATING_POINT_LITERAL;
                             jjCheckNAddTwoStates(19, 20);
                             break;
                         case 21:
-                            if ((0x280000000000L & l) != 0L)
+                            if ((0x280000000000L & l) != 0L)                // 如果curChar 为 + -
                                 jjCheckNAdd(22);
                             break;
                         case 22:
                             if ((0x3ff000000000000L & l) == 0L)
                                 break;
-                            if (ELParser.getKindPos(kind) > 9)
+                            if (ELParser.getKindPos(kind) > 9)              // 如果curChar 为 0 1 2 3 4 5 6 7 8 9
                                 kind = FLOATING_POINT_LITERAL;
                             jjCheckNAdd(22);
                             break;
                         case 23:
-                            if ((0x3ff000000000000L & l) != 0L)
+                            if ((0x3ff000000000000L & l) != 0L)             // 如果curChar 为 0 1 2 3 4 5 6 7 8 9
                                 jjCheckNAddTwoStates(23, 24);
                             break;
                         case 25:
-                            if ((0x280000000000L & l) != 0L)
+                            if ((0x280000000000L & l) != 0L)                // 如果curChar 为 + -
                                 jjCheckNAdd(26);
                             break;
                         case 26:
                             if ((0x3ff000000000000L & l) == 0L)
                                 break;
-                            if (ELParser.getKindPos(kind) > 9)
+                            if (ELParser.getKindPos(kind) > 9)              // 如果curChar 为 0 1 2 3 4 5 6 7 8 9
                                 kind = FLOATING_POINT_LITERAL;
                             jjCheckNAdd(26);
                             break;
                         case 27:
                             if ((0x1800000000L & l) == 0L)
                                 break;
-                            if (ELParser.getKindPos(kind) > 51)
+                            if (ELParser.getKindPos(kind) > 51)             // 如果curChar 为 # $
                                 kind = IDENTIFIER;
                             jjCheckNAddTwoStates(28, 29);
                             break;
                         case 28:
                             if ((0x3ff001000000000L & l) == 0L)
                                 break;
-                            if (ELParser.getKindPos(kind) > 51)
+                            if (ELParser.getKindPos(kind) > 51)             // 如果curChar 为 $ 0 1 2 3 4 5 6 7 8 9
                                 kind = IDENTIFIER;
                             jjCheckNAdd(28);
                             break;
                         case 29:
                             if ((0x3ff001000000000L & l) == 0L)
                                 break;
-                            if (ELParser.getKindPos(kind) > 52)
+                            if (ELParser.getKindPos(kind) > 52)             // 如果curChar 为 $ 0 1 2 3 4 5 6 7 8 9
                                 kind = FUNCTIONSUFFIX;
                             jjCheckNAdd(29);
                             break;
@@ -865,18 +871,20 @@ public class ELParserTokenManager implements ELParserConstants {
                 do {
                     switch (jjstateSet[--i]) {
                         case 0:
-                            if ((0x7fffffe87fffffeL & l) == 0L)
+                            if ((0x7fffffe87fffffeL & l) == 0L)             // 如果curChar 为 ; < = > ? @ [ \ ] ^ ` { | } ~ 删除键
                                 break;
                             if (ELParser.getKindPos(kind) > 51)
                                 kind = IDENTIFIER;
                             jjCheckNAddTwoStates(28, 29);
                             break;
                         case 30:
+                            // 如果curChar 为 ; < = > ? @ [ \ ] ^ ` { | } ~ 删除键
                             if ((0x7fffffe87fffffeL & l) != 0L) {
                                 if (ELParser.getKindPos(kind) > 52)
                                     kind = FUNCTIONSUFFIX;
                                 jjCheckNAdd(29);
                             }
+                            // 如果curChar 为 ; < = > ? @ [ \ ] ^ ` { | } ~ 删除键
                             if ((0x7fffffe87fffffeL & l) != 0L) {
                                 if (ELParser.getKindPos(kind) > 51)
                                     kind = IDENTIFIER;
@@ -884,42 +892,50 @@ public class ELParserTokenManager implements ELParserConstants {
                             }
                             break;
                         case 2:
+                            // 如果curChar 为 % E e
                             if ((0x2000000020L & l) != 0L)
                                 jjAddStates(29, 30);
                             break;
                         case 6:
+                            // 如果curChar 为 ! " # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @ A B C D E F
+                            // G H I J K L M N O P Q R S T U V W X Y Z [ ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~ 
                             if ((0xffffffffefffffffL & l) != 0L)
                                 jjCheckNAddStates(26, 28);
                             break;
                         case 7:
-                            if (curChar == 92)
+                            if (curChar == 92)      // 反斜杠
                                 jjstateSet[jjnewStateCnt++] = 8;
                             break;
                         case 8:
-                            if (curChar == 92)
+                            if (curChar == 92)      // 反斜杠
                                 jjCheckNAddStates(26, 28);
                             break;
                         case 11:
+                            // 如果curChar 为 ! " # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @ A B C D E F
+                            // G H I J K L M N O P Q R S T U V W X Y Z [ ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~ 
                             if ((0xffffffffefffffffL & l) != 0L)
                                 jjCheckNAddStates(23, 25);
                             break;
                         case 12:
-                            if (curChar == 92)
+                            if (curChar == 92)          //  反斜杠
                                 jjstateSet[jjnewStateCnt++] = 13;
                             break;
                         case 13:
-                            if (curChar == 92)
+                            if (curChar == 92)          // 反斜杠
                                 jjCheckNAddStates(23, 25);
                             break;
                         case 20:
+                            // 如果curChar 为 % E e
                             if ((0x2000000020L & l) != 0L)
                                 jjAddStates(31, 32);
                             break;
                         case 24:
+                            // 如果curChar 为 % E e
                             if ((0x2000000020L & l) != 0L)
                                 jjAddStates(33, 34);
                             break;
                         case 28:
+                            // 如果curChar 为 ; < = > ? @ [ \ ] ^ ` { | } ~ 
                             if ((0x7fffffe87fffffeL & l) == 0L)
                                 break;
                             if (ELParser.getKindPos(kind) > 51)
@@ -927,6 +943,7 @@ public class ELParserTokenManager implements ELParserConstants {
                             jjCheckNAdd(28);
                             break;
                         case 29:
+                            // 如果curChar 为 ; < = > ? @ [ \ ] ^ ` { | } ~ 
                             if ((0x7fffffe87fffffeL & l) == 0L)
                                 break;
                             if (ELParser.getKindPos(kind) > 52)
@@ -946,41 +963,41 @@ public class ELParserTokenManager implements ELParserConstants {
                 do {
                     switch (jjstateSet[--i]) {
                         case 0:
-                            if (!jjCanMove_1(hiByte, i1, i2, l1, l2))
+                            if (!jjCanMove_1(hiByte, i1, i2, l1, l2))   // 如果ASCII 为  128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 215 247
                                 break;
                             if (ELParser.getKindPos(kind) > 51)
                                 kind = IDENTIFIER;
                             jjCheckNAddTwoStates(28, 29);
                             break;
                         case 30:
-                            if (jjCanMove_1(hiByte, i1, i2, l1, l2)) {
+                            if (jjCanMove_1(hiByte, i1, i2, l1, l2)) {   // 如果ASCII为 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 248 249 250 251 252 253 254
                                 if (ELParser.getKindPos(kind) > 51)
                                     kind = IDENTIFIER;
                                 jjCheckNAdd(28);
                             }
-                            if (jjCanMove_1(hiByte, i1, i2, l1, l2)) {
+                            if (jjCanMove_1(hiByte, i1, i2, l1, l2)) {   // 如果ASCII为 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 248 249 250 251 252 253 254
                                 if (ELParser.getKindPos(kind) > 52)
                                     kind = FUNCTIONSUFFIX;
                                 jjCheckNAdd(29);
                             }
                             break;
                         case 6:
-                            if (jjCanMove_0(hiByte, i1, i2, l1, l2))
+                            if (jjCanMove_0(hiByte, i1, i2, l1, l2))   // 如果ASCII 为 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254
                                 jjAddStates(26, 28);
                             break;
                         case 11:
-                            if (jjCanMove_0(hiByte, i1, i2, l1, l2))
+                            if (jjCanMove_0(hiByte, i1, i2, l1, l2))    // 如果ASCII 为 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254
                                 jjAddStates(23, 25);
                             break;
                         case 28:
-                            if (!jjCanMove_1(hiByte, i1, i2, l1, l2))
+                            if (!jjCanMove_1(hiByte, i1, i2, l1, l2))   // 如果ASCII 为 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 215 247
                                 break;
                             if (ELParser.getKindPos(kind) > 51)
                                 kind = IDENTIFIER;
                             jjCheckNAdd(28);
                             break;
                         case 29:
-                            if (!jjCanMove_1(hiByte, i1, i2, l1, l2))
+                            if (!jjCanMove_1(hiByte, i1, i2, l1, l2))   // 如果ASSCII 为 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 215 247
                                 break;
                             if (ELParser.getKindPos(kind) > 52)
                                 kind = FUNCTIONSUFFIX;
@@ -997,7 +1014,11 @@ public class ELParserTokenManager implements ELParserConstants {
                 kind = "0x7fffffff";
             }
             ++curPos;
-            if ((i = jjnewStateCnt) == (startsAt = 30 - (jjnewStateCnt = startsAt)))
+            i = jjnewStateCnt;
+            jjnewStateCnt = startsAt;
+            startsAt = 30 - startsAt;
+            //if ((i = jjnewStateCnt) == (startsAt = 30 - (jjnewStateCnt = startsAt)))
+            if(i == startsAt)
                 return curPos;
             try {
                 curChar = input_stream.readChar();
@@ -1179,7 +1200,7 @@ public class ELParserTokenManager implements ELParserConstants {
      */
     public Token getNextToken() {
         Token matchedToken;
-        int curPos = 0;
+         int curPos = 0;
 
         EOFLoop:
         for (; ; ) {
@@ -1192,14 +1213,15 @@ public class ELParserTokenManager implements ELParserConstants {
             }
 
             switch (curLexState) {
-                case 0:
+                case 0:         // 如果当前 curLexState 为 }
                     jjmatchedKind = default_jjmatchedKind;
                     jjmatchedPos = 0;
                     curPos = jjMoveStringLiteralDfa0_0();
                     break;
-                case 1:
+                case 1:         // 如果当前 curLexState 为 ${ 或 #{
                     try {
                         input_stream.backup(0);
+                        // 如果 curChar是 水平制表符 ，换行键，回车键 ，空格时，则重新读取
                         while (curChar <= 32 && (0x100002600L & (1L << curChar)) != 0L)
                             curChar = input_stream.BeginToken();
                     } catch (java.io.IOException e1) {
@@ -1208,20 +1230,24 @@ public class ELParserTokenManager implements ELParserConstants {
                     jjmatchedKind = default_jjmatchedKind;
                     jjmatchedPos = 0;
                     curPos = jjMoveStringLiteralDfa0_1();
-                    if (jjmatchedPos == 0 && ELParser.getKindPos(jjmatchedKind)> 56) {
+                    if (jjmatchedPos == 0 && ELParser.getKindPos(jjmatchedKind)> 56) {  // 如果是非法字符
                         jjmatchedKind = ELParserConstants.ILLEGAL_CHARACTER;
                     }
                     break;
             }
-            if (!Utils.eq(jjmatchedKind ,default_jjmatchedKind)) {
+
+            if (!Utils.eq(jjmatchedKind, default_jjmatchedKind)) {
                 if (jjmatchedPos + 1 < curPos)
                     input_stream.backup(curPos - jjmatchedPos - 1);
-                if ((jjtoToken[ELParser.getKindPos(jjmatchedKind) >> 6] & (1L << (ELParser.getKindPos(jjmatchedKind) & 077))) != 0L) {
+
+                int index = ELParser.getKindPos(jjmatchedKind);
+                if ((jjtoToken[index >> 6] & (1L << (index & 077))) != 0L) { // 如果非 空格 ,\t ,\n , \r , <EXPONENT>, #, <LETTER>, <DIGIT>  ，则退出循环
                     matchedToken = jjFillToken();
+                    // 如果 jjmatchedKind 为 ${ , #{ , } ，则设置当前curLexState为 jjmatchedKind
                     if (jjnewLexState[ELParser.getKindPos(jjmatchedKind)] != -1)
                         curLexState = jjnewLexState[ELParser.getKindPos(jjmatchedKind)];
                     return matchedToken;
-                } else {
+                } else { // 如果是 空格 ,\t ,\n , \r , <EXPONENT>, #, <LETTER>, <DIGIT> 则继续循环
                     if (jjnewLexState[ELParser.getKindPos(jjmatchedKind)] != -1)
                         curLexState = jjnewLexState[ELParser.getKindPos(jjmatchedKind)];
                     continue EOFLoop;

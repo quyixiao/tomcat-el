@@ -978,7 +978,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
 
     /*
      * Unary
-     * For '-' '!' 'not' 'empty', then Value
+     * For '-' '!' 'not' 'empty', then Value ， 一元
      */
     final public void Unary() throws ParseException {
         switch ((Utils.eq(jj_ntk, jj_kind)) ? jj_ntk() : jj_ntk) {
