@@ -7,7 +7,8 @@ import java.io.StringReader;
 
 public class TestEl {
     public static void main(String[] args) throws Exception {
-        String expr = "${'abc'}";
+        String expr = "ns:function(1,2)";
+
         Node n =  (new ELParser(new StringReader(expr))).CompositeExpression();
         System.out.println(n);
     }
