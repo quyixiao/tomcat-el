@@ -2,6 +2,12 @@
 /* JavaCCOptions:STATIC=false,SUPPORT_CLASS_VISIBILITY_PUBLIC=true */
 package org.apache.el.parser;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 /**
  * An implementation of interface CharStream, where the stream is assumed to
  * contain only ASCII characters (without unicode processing).
@@ -12,27 +18,32 @@ public class SimpleCharStream {
      * Whether parser is static.
      */
     public static final boolean staticFlag = false;
-    int bufsize;
-    int available;
-    int tokenBegin;
+    int bufsize;                                            // buffer数组的长度
+    int available;                                          // buffer的可用长度
+    int tokenBegin;                                         // 每一次获取 token时，在 buffer数组的起始位置
     /**
      * Position in buffer.
      */
-    public int bufpos = -1;
-    protected int bufline[];
-    protected int bufcolumn[];
+    public int bufpos = -1;                                 //最后一次读取字符所在buffer数组中的位置
+    protected int bufline[];                                //buffer 数组中的每一个字符对应在脚本中的行
+    protected int bufcolumn[];                              //buffer 数组中每一个字符对应的列
 
-    protected int column = 0;
-    protected int line = 1;
+    protected int column = 0;                               //列下标从0开始
+    protected int line = 1;                                 //行下标从1开始
 
     protected boolean prevCharIsCR = false;
     protected boolean prevCharIsLF = false;
 
     protected java.io.Reader inputStream;
+    public final static int  expandSize=0;
+    public final static int  initSize=8;
 
-    protected char[] buffer;
+    protected char[] buffer;                                //外部每一次读取的字符缓存数组
+    // 每次从 inputStream 中读取的固定长度
+    //nextCharBuf索引计数器，每ReadByte()一次，nextCharInd值加1，
+    //当maxNextCharInd == nextCharInd 时，inputStream需要再次 reader byte 到nextCharBuf中，直到文件读取结束
     protected int maxNextCharInd = 0;
-    protected int inBuf = 0;
+    protected int inBuf = 0;                                //每次backup回退的byte数
     protected int tabSize = 8;
 
     protected void setTabSize(int i) {
@@ -44,10 +55,11 @@ public class SimpleCharStream {
     }
 
 
+    //此函数主要用于buffer数组扩容
     protected void ExpandBuff(boolean wrapAround) {
-        char[] newbuffer = new char[bufsize + 2048];
-        int newbufline[] = new int[bufsize + 2048];
-        int newbufcolumn[] = new int[bufsize + 2048];
+        char[] newbuffer = new char[bufsize + expandSize];
+        int newbufline[] = new int[bufsize + expandSize];
+        int newbufcolumn[] = new int[bufsize + expandSize];
 
         try {
             if (wrapAround) {
@@ -81,44 +93,9 @@ public class SimpleCharStream {
         }
 
 
-        bufsize += 2048;
+        bufsize += expandSize;
         available = bufsize;
         tokenBegin = 0;
-    }
-
-    protected void FillBuff() throws java.io.IOException {
-        if (maxNextCharInd == available) {
-            if (available == bufsize) {
-                if (tokenBegin > 2048) {
-                    bufpos = maxNextCharInd = 0;
-                    available = tokenBegin;
-                } else if (tokenBegin < 0)
-                    bufpos = maxNextCharInd = 0;
-                else
-                    ExpandBuff(false);
-            } else if (available > tokenBegin)
-                available = bufsize;
-            else if ((tokenBegin - available) < 2048)
-                ExpandBuff(true);
-            else
-                available = tokenBegin;
-        }
-
-        int i;
-        try {
-            if ((i = inputStream.read(buffer, maxNextCharInd, available - maxNextCharInd)) == -1) {
-                inputStream.close();
-                throw new java.io.IOException();
-            } else
-                maxNextCharInd += i;
-            return;
-        } catch (java.io.IOException e) {
-            --bufpos;
-            backup(0);
-            if (tokenBegin == -1)
-                tokenBegin = bufpos;
-            throw e;
-        }
     }
 
     /**
@@ -165,9 +142,8 @@ public class SimpleCharStream {
         bufcolumn[bufpos] = column;
     }
 
-    /**
-     * Read a character.
-     */
+    //主要是提供给外部调用，当上一次调用了 backup函数时
+    //inBuf > 0 ，此时不再从nextCharBuf数组中读取，而是从缓存buffer中读取
     public char readChar() throws java.io.IOException {
         if (inBuf > 0) {
             --inBuf;
@@ -265,14 +241,14 @@ public class SimpleCharStream {
      */
     public SimpleCharStream(java.io.Reader dstream, int startline,
                             int startcolumn) {
-        this(dstream, startline, startcolumn, 4096);
+        this(dstream, startline, startcolumn, initSize);
     }
 
     /**
      * Constructor.
      */
     public SimpleCharStream(java.io.Reader dstream) {
-        this(dstream, 1, 1, 4096);
+        this(dstream, 1, 1, initSize);
     }
 
     /**
@@ -300,14 +276,14 @@ public class SimpleCharStream {
      */
     public void ReInit(java.io.Reader dstream, int startline,
                        int startcolumn) {
-        ReInit(dstream, startline, startcolumn, 4096);
+        ReInit(dstream, startline, startcolumn, initSize);
     }
 
     /**
      * Reinitialise.
      */
     public void ReInit(java.io.Reader dstream) {
-        ReInit(dstream, 1, 1, 4096);
+        ReInit(dstream, 1, 1, initSize);
     }
 
     /**
@@ -331,7 +307,7 @@ public class SimpleCharStream {
      */
     public SimpleCharStream(java.io.InputStream dstream, String encoding, int startline,
                             int startcolumn) throws java.io.UnsupportedEncodingException {
-        this(dstream, encoding, startline, startcolumn, 4096);
+        this(dstream, encoding, startline, startcolumn, initSize);
     }
 
     /**
@@ -339,21 +315,21 @@ public class SimpleCharStream {
      */
     public SimpleCharStream(java.io.InputStream dstream, int startline,
                             int startcolumn) {
-        this(dstream, startline, startcolumn, 4096);
+        this(dstream, startline, startcolumn, initSize);
     }
 
     /**
      * Constructor.
      */
     public SimpleCharStream(java.io.InputStream dstream, String encoding) throws java.io.UnsupportedEncodingException {
-        this(dstream, encoding, 1, 1, 4096);
+        this(dstream, encoding, 1, 1, initSize);
     }
 
     /**
      * Constructor.
      */
     public SimpleCharStream(java.io.InputStream dstream) {
-        this(dstream, 1, 1, 4096);
+        this(dstream, 1, 1, initSize);
     }
 
     /**
@@ -376,14 +352,14 @@ public class SimpleCharStream {
      * Reinitialise.
      */
     public void ReInit(java.io.InputStream dstream, String encoding) throws java.io.UnsupportedEncodingException {
-        ReInit(dstream, encoding, 1, 1, 4096);
+        ReInit(dstream, encoding, 1, 1, initSize);
     }
 
     /**
      * Reinitialise.
      */
     public void ReInit(java.io.InputStream dstream) {
-        ReInit(dstream, 1, 1, 4096);
+        ReInit(dstream, 1, 1, initSize);
     }
 
     /**
@@ -391,7 +367,7 @@ public class SimpleCharStream {
      */
     public void ReInit(java.io.InputStream dstream, String encoding, int startline,
                        int startcolumn) throws java.io.UnsupportedEncodingException {
-        ReInit(dstream, encoding, startline, startcolumn, 4096);
+        ReInit(dstream, encoding, startline, startcolumn, initSize);
     }
 
     /**
@@ -399,7 +375,7 @@ public class SimpleCharStream {
      */
     public void ReInit(java.io.InputStream dstream, int startline,
                        int startcolumn) {
-        ReInit(dstream, startline, startcolumn, 4096);
+        ReInit(dstream, startline, startcolumn, initSize);
     }
 
     /**
@@ -478,6 +454,141 @@ public class SimpleCharStream {
         line = bufline[j];
         column = bufcolumn[j];
     }
+
+
+    protected void FillBuff() throws java.io.IOException {
+        if (maxNextCharInd == available) {
+
+            if (available == bufsize) {
+                if (tokenBegin > expandSize) {
+                    bufpos = maxNextCharInd = 0;
+                    available = tokenBegin;
+                } else if (tokenBegin < 0)
+                    bufpos = maxNextCharInd = 0;
+                else
+                    ExpandBuff(false);
+            } else if (available > tokenBegin)
+                available = bufsize;
+            else if ((tokenBegin - available) < expandSize)
+                ExpandBuff(true);
+            else
+                available = tokenBegin;
+
+        }
+
+        int i;
+        try {
+            if ((i = inputStream.read(buffer, maxNextCharInd, available - maxNextCharInd)) == -1) {
+                inputStream.close();
+                throw new java.io.IOException();
+            } else {
+                System.out.println(Arrays.toString(buffer));
+                maxNextCharInd += i;
+            }
+            return;
+        } catch (java.io.IOException e) {
+            --bufpos;
+            backup(0);
+            if (tokenBegin == -1)
+                tokenBegin = bufpos;
+            throw e;
+        }
+    }
+
+
+    public static String read(SimpleCharStream jj_input_stream, int p) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < p; i++) {
+            try {
+                if(i == 7 ){
+                    System.out.println(i);
+                }
+                char a = jj_input_stream.BeginToken();
+                sb.append(a + "");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return sb.toString();
+    }
+
+
+    public static void test1() throws Exception{
+        Reader in = new FileReader("/Users/quyixiao/gitlab/tomcat-el/src/test/el/test4.tsh");
+        SimpleCharStream jj_input_stream = new SimpleCharStream(in, 1, 1);
+
+        for(int i = 0 ;i < 6;i ++){
+            jj_input_stream.readChar();
+        }
+
+        jj_input_stream.BeginToken();
+
+        jj_input_stream.readChar();
+        jj_input_stream.readChar();
+        jj_input_stream.readChar();
+        jj_input_stream.readChar();
+        jj_input_stream.readChar();
+        jj_input_stream.readChar();
+        jj_input_stream.readChar();
+        jj_input_stream.readChar();
+        jj_input_stream.readChar();
+        jj_input_stream.readChar();
+        jj_input_stream.readChar();
+    }
+
+
+
+
+    public static void test2() throws Exception{
+        Reader in = new FileReader("/Users/quyixiao/gitlab/tomcat-el/src/test/el/test4.tsh");
+        SimpleCharStream jj_input_stream = new SimpleCharStream(in, 1, 1);
+
+
+        for(int i = 0 ;i < 4 ;i ++){
+            jj_input_stream.readChar();
+        }
+
+
+        jj_input_stream.BeginToken();
+
+        for(int i = 0 ;i  < 6 ;i ++){
+            char c = jj_input_stream.readChar();
+            System.out.println(c);
+        }
+        jj_input_stream.readChar();
+        jj_input_stream.readChar();
+        jj_input_stream.readChar();
+        jj_input_stream.BeginToken();
+    }
+
+
+
+    public static void test3() throws Exception{
+        Reader in = new FileReader("/Users/quyixiao/gitlab/tomcat-el/src/test/el/test4.tsh");
+        SimpleCharStream jj_input_stream = new SimpleCharStream(in, 1, 1);
+
+
+        for(int i = 0 ;i < 6 ;i ++){
+            System.out.println(jj_input_stream.readChar());
+        }
+
+        System.out.println("begin="+jj_input_stream.BeginToken());
+        char c = jj_input_stream.readChar();
+        System.out.println(c);
+        System.out.println(jj_input_stream.readChar());
+        System.out.println(jj_input_stream.readChar());
+        System.out.println(jj_input_stream.readChar());
+        System.out.println("begin="+jj_input_stream.BeginToken());
+        System.out.println(jj_input_stream.readChar());
+        System.out.println(jj_input_stream.readChar());
+        System.out.println(jj_input_stream.readChar());
+    }
+
+
+    public static void main(String[] args)throws Exception {
+        test1();
+    }
+
 
 }
 /* JavaCC - OriginalChecksum=9ba0db3918bffb8019f00da1e421f339 (do not edit this line) */

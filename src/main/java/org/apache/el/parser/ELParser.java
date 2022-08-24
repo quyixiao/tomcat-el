@@ -2342,7 +2342,7 @@ public class ELParser/*@bgen(jjtree)*/ implements ELParserTreeConstants, ELParse
         else
             token = token.next = token_source.getNextToken();
         jj_ntk = jj_kind;
-        if (Utils.eq(token.kind ,kind)) {
+        if (Utils.eq(token.kind, kind)) {
             jj_gen++;
             if (++jj_gc > 100) {
                 jj_gc = 0;
