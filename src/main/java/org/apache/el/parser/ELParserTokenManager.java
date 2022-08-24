@@ -237,6 +237,7 @@ public class ELParserTokenManager implements ELParserConstants {
                     }
                 } while (i != startsAt);
             }
+
             if (kind != default_jjmatchedKind) {
                 jjmatchedKind = kind;
                 jjmatchedPos = curPos;
@@ -704,6 +705,9 @@ public class ELParserTokenManager implements ELParserConstants {
             0x3fffffffffffL, 0x0L, 0x0L, 0x0L
     };
 
+
+
+
     private int jjMoveNfa_1(int startState, int curPos) {
         int startsAt = 0;
         jjnewStateCnt = 30;
@@ -1043,6 +1047,10 @@ public class ELParserTokenManager implements ELParserConstants {
             }
         }
     }
+
+
+
+
 
     static final int[] jjnextStates = {
             0, 1, 3, 4, 2, 0, 1, 4, 2, 0, 1, 4, 5, 2, 0, 1,

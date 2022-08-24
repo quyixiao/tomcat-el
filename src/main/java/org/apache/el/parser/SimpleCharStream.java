@@ -35,8 +35,8 @@ public class SimpleCharStream {
     protected boolean prevCharIsLF = false;
 
     protected java.io.Reader inputStream;
-    public final static int  expandSize=0;
-    public final static int  initSize=8;
+    public final static int  expandSize=2048;
+    public final static int  initSize=4096;
 
     protected char[] buffer;                                //外部每一次读取的字符缓存数组
     // 每次从 inputStream 中读取的固定长度
